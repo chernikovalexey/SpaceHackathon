@@ -38,6 +38,10 @@ public class Entity {
 		return cellY;
 	}
 
+	public float getDistanceTo(Entity entity) {
+		return (float) Math.sqrt(Math.pow(entity.x - x, 2.0) + Math.pow(entity.y - y, 2.0));
+	}
+
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 	}
 
