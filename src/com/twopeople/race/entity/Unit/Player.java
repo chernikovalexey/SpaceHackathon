@@ -21,8 +21,8 @@ public class Player extends MoveableEntity {
 		Input input = container.getInput();
 		boolean pressed = false;
 
-		direction.set(0,0);
-		
+		direction.set(0, 0);
+
 		if (input.isKeyDown(Input.KEY_A)) {
 			direction.x = -1;
 			pressed = true;

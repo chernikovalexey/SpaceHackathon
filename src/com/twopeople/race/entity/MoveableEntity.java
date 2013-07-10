@@ -40,8 +40,8 @@ public class MoveableEntity extends Entity {
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
 
-		//inertness.x = velocity.x * delta * 5f;
-		//inertness.y = velocity.y * delta * 5f;
+		inertness.x = velocity.x * delta * 0.05f;
+		inertness.y = velocity.y * delta * 0.05f;
 
 		x += velocity.x * (delta * .01f) * 5;
 		y += velocity.y * (delta * .01f) * 5;
