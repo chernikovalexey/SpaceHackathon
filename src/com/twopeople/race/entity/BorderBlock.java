@@ -8,7 +8,7 @@ public class BorderBlock extends Entity {
     {
         Left, Right
     }
-    public BlockPosition Position;
+    public BlockPosition position;
 
 	public BorderBlock(World world, float x, float y) {
 		super(world, x, y, 16, 16);

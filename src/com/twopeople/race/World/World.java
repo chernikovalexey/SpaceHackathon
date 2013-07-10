@@ -71,4 +71,8 @@ public class World {
 	public Camera getCamera() {
 		return camera;
 	}
+
+    public EntityGridVault getBorders() {
+        return borders;
+    }
 }

@@ -1,6 +1,9 @@
 package com.twopeople.race.World.Loader;
 
 import com.twopeople.race.World.World;
+import com.twopeople.race.entity.BorderBlock;
+import com.twopeople.race.entity.Entity;
+import com.twopeople.race.entity.EntityGridVault;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -9,6 +12,8 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with podko_000.
@@ -25,6 +30,69 @@ public class WorldLoader {
         metaData = WorldMetaData.load(dirName + "\\meta.bin");
         _world=world;
         _parseImage(dirName + "\\data.png");
+        _sortBorders();
+    }
+
+    private void _sortBorders() {
+        EntityGridVault v = _world.getBorders();
+
+        List<Entity> borders = v.getAll();
+
+        List<BorderBlock> left=new ArrayList<BorderBlock>();
+        List<BorderBlock> right=new ArrayList<BorderBlock>();
+
+        BorderBlock block;
+        for(Entity border: borders)
+        {
+            block = (BorderBlock)border;
+            if(block.position == BorderBlock.BlockPosition.Left)
+                left.add(block);
+            else
+                right.add(block);
+        }
+
+        left = _orderBlocks(left);
+        right= _orderBlocks(right);
+
+        borders.clear();
+
+        for(BorderBlock b:left)
+            borders.add(b);
+
+        for(BorderBlock b:right)
+            borders.add(b);
+    }
+
+    private List<BorderBlock> _orderBlocks(List<BorderBlock> blocks) {
+        List<BorderBlock> result=new ArrayList<BorderBlock>();
+
+        BorderBlock a,b = null;
+        float minDist,d;
+        int minJ = 0;
+        for(int i=0;i<blocks.size();i++)
+        {
+            a=blocks.get(i);
+            result.add(a);
+            minDist=Float.MAX_VALUE;
+            for(int j=0;j<blocks.size();j++)
+            {
+                b=blocks.get(j);
+                if(i==j)
+                    continue;
+
+                d = a.getDistanceTo(b);
+                if(d<minDist)
+                {
+                    minDist=d;
+                    minJ=j;
+                }
+            }
+            result.add(b);
+            result.remove(i);
+            result.remove(minJ);
+        }
+
+        return result;
     }
 
     private void _parseImage(String fileName) throws IOException, SlickException {
