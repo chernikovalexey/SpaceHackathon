@@ -54,7 +54,7 @@ public class World {
 		Iterator<Entity> iterator = vault.getVisible(camera).iterator();
 		while (iterator.hasNext()) {
 			Entity e = iterator.next();
-			e.render(container, g);
+			e.render(container, g, camera);
 		}
 	}
 

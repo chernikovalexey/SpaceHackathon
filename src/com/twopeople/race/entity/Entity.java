@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.twopeople.race.World.Camera;
 import com.twopeople.race.World.World;
 
 public class Entity {
@@ -12,6 +13,7 @@ public class Entity {
 	protected float x, y;
 	protected int w, h;
 	private int cellX, cellY;
+	public float angle = 0f;
 
 	protected Vector2f direction = new Vector2f(0, 0);
 
@@ -39,8 +41,6 @@ public class Entity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 	}
 
-	public void render(GameContainer container, Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect(x, y, w, h);
+	public void render(GameContainer container, Graphics g, Camera camera) {
 	}
 }
