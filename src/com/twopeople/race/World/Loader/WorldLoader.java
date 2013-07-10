@@ -2,6 +2,8 @@ package com.twopeople.race.World.Loader;
 
 import com.twopeople.race.World.World;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
@@ -19,35 +21,25 @@ public class WorldLoader {
     private WorldMetaData metaData;
     private World _world;
 
-    public WorldLoader(String dirName, World world) throws IOException, ClassNotFoundException {
+    public WorldLoader(String dirName, World world) throws IOException, ClassNotFoundException, SlickException {
         metaData = WorldMetaData.load(dirName + "\\meta.bin");
         _world=world;
         _parseImage(dirName + "\\data.png");
     }
 
-    private void _parseImage(String fileName) throws IOException {
-        FileInputStream fs = new FileInputStream(fileName);
-        Texture t = TextureLoader.getTexture("PNG", fs);
+    private void _parseImage(String fileName) throws IOException, SlickException {
 
+        Image img=new Image(fileName);
         Color pixelColor;
-        for(int i=0;i<t.getImageWidth();i++)
-            for(int j=0;j<t.getImageHeight();j++)
-                WorldColor.commands.get(_getPixelColor(t,i,j)).execute(_world, i, j);
+        for(int i=0;i<img.getWidth();i++)
+            for(int j=0;j<img.getHeight();j++)
+            {
+                pixelColor=img.getColor(i, j);
+                WorldColor.commands.get(pixelColor).execute(_world, i, j, pixelColor);
+            }
     }
 
     private byte[] data;
-
-    private Color _getPixelColor(Texture texture, int x, int y) {
-        if (data == null)
-            data = texture.getTextureData();
-        byte r = data[4 * y * texture.getImageWidth() + x];
-        byte g = data[4 * y * texture.getImageWidth() + x + 1];
-        byte b = data[4 * y * texture.getImageWidth() + x + 2];
-        byte a = data[4 * y * texture.getImageWidth() + x + 3];
-
-        return new Color(r,g,b,a);
-    }
-
     public WorldMetaData getMetaData() {
         return metaData;
     }
