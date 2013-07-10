@@ -10,9 +10,9 @@ public class Player extends MoveableEntity {
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
 
-		setFriction(.01f);
-		setXSpeed(5f);
-		setYSpeed(5f);
+		setFriction(0.9f);
+		setXSpeed(10f);
+		setYSpeed(10f);
 	}
 
 	@Override
@@ -20,6 +20,8 @@ public class Player extends MoveableEntity {
 		Input input = container.getInput();
 		boolean pressed = false;
 
+		direction.set(0,0);
+		
 		if (input.isKeyDown(Input.KEY_A)) {
 			direction.x = -1;
 			pressed = true;
