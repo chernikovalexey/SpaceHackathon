@@ -1,4 +1,4 @@
-package com.twopeople.race.World;
+package com.twopeople.race.World.Loader;
 
 import java.io.*;
 
@@ -56,7 +56,7 @@ public class WorldMetaData implements Serializable {
         this.laps = laps;
     }
 
-    public boolean isHaveLaps() {
+    public boolean haveLaps() {
         return haveLaps;
     }
 
