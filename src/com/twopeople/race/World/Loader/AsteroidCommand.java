@@ -3,6 +3,7 @@ package com.twopeople.race.World.Loader;
 import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
+import org.newdawn.slick.Color;
 
 /**
  * Created with podko_000.
@@ -14,8 +15,9 @@ import com.twopeople.race.entity.Entity;
 public class AsteroidCommand implements IWorldColorCommand {
 
     @Override
-    public void execute(World world, int px, int py) {
+    public void execute(World world, int px, int py, Color color) {
         Asteroid asteroid = new Asteroid(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
-        //todo: add asteroid to world
+        //todo: set random vector of movement to asteroid
+        world.addEntity(asteroid);
     }
 }

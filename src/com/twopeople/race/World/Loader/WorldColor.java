@@ -2,7 +2,7 @@ package com.twopeople.race.World.Loader;
 
 import org.newdawn.slick.Color;
 
-import java.util.Dictionary;
+import java.util.HashMap;
 
 /**
  * Created with podko_000.
@@ -13,13 +13,18 @@ import java.util.Dictionary;
  */
 public class WorldColor {
 
-    public static final Color borderBlock=new Color(255,0,0);
-    public static final Color asteroid=new Color(0,255,0);
+    public static final Color L_BORDER_BLOCK = new Color(254, 0, 0);
+    public static final Color R_BORDER_BLOCK = new Color(255, 0, 0);
+    public static final Color asteroid = new Color(0, 255, 0);
+    public static final Color zero = Color.black;
 
-    public static Dictionary<Color, IWorldColorCommand> commands;
-    static
-    {
-         commands.put(borderBlock, new BorderBlockCommand());
-         commands.put(asteroid, new AsteroidCommand());
+    public static HashMap<Color, IWorldColorCommand> commands;
+
+    static {
+        commands=new HashMap<Color, IWorldColorCommand>();
+        commands.put(L_BORDER_BLOCK, new BorderBlockCommand());
+        commands.put(R_BORDER_BLOCK, new BorderBlockCommand());
+        commands.put(asteroid, new AsteroidCommand());
+        commands.put(zero, new ZeroCommand());
     }
 }

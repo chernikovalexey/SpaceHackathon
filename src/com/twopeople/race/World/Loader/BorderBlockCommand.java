@@ -4,6 +4,7 @@ import com.twopeople.race.World.Loader.IWorldColorCommand;
 import com.twopeople.race.World.World;
 import com.twopeople.race.entity.BorderBlock;
 import com.twopeople.race.entity.Entity;
+import org.newdawn.slick.Color;
 
 /**
  * Created with podko_000.
@@ -14,8 +15,12 @@ import com.twopeople.race.entity.Entity;
  */
 public class BorderBlockCommand implements IWorldColorCommand {
     @Override
-    public void execute(World world, int px, int py) {
-        BorderBlock block=new BorderBlock(world, px * World.TILE_SIZE, py* World.TILE_SIZE);
-
+    public void execute(World world, int px, int py, Color pixel) {
+        BorderBlock block = new BorderBlock(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
+        if (pixel == WorldColor.R_BORDER_BLOCK)
+            block.Position = BorderBlock.BlockPosition.Right;
+        else
+            block.Position = BorderBlock.BlockPosition.Left;
+        world.addBorder(block);
     }
 }

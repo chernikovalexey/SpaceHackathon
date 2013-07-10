@@ -1,7 +1,9 @@
 package com.twopeople.race.World;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.twopeople.race.entity.BorderBlock;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
@@ -18,10 +20,13 @@ public class World {
 	public static final int TILE_SIZE = 16;
 
 	private WorldMetaData metaData;
+    private EntityGridVault borders;
 
 	public World(Camera camera) {
 		this.camera = camera;
 		this.entities = new EntityGridVault(128, 128, 12, 12);
+        this.borders=new EntityGridVault(256,256, 6, 6);
+
 		entities.add(new Player(this, 10, 10));
 	}
 
@@ -52,6 +57,16 @@ public class World {
 			e.render(container, g, camera);
 		}
 	}
+
+    public void addEntity(Entity e)
+    {
+        entities.add(e);
+    }
+
+    public void addBorder(BorderBlock border)
+    {
+        borders.add(border);
+    }
 
 	public Camera getCamera() {
 		return camera;
