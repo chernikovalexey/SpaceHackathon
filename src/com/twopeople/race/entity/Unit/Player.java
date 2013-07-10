@@ -40,9 +40,7 @@ public class Player extends MoveableEntity {
 			pressed = true;
 		}
 
-		if (pressed) {
-			move(direction, delta);
-		}
+		move(direction, delta);
 		super.update(container, delta, vault);
 	}
 }

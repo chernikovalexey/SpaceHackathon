@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
+import com.twopeople.race.World.Loader.WorldMetaData;
 import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.Unit.Player;
