@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 
 import com.twopeople.race.World.World;
+import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.MoveableEntity;
 
 public class Player extends MoveableEntity {
@@ -16,7 +17,7 @@ public class Player extends MoveableEntity {
 	}
 
 	@Override
-	public void update(GameContainer container, int delta) {
+	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 		boolean pressed = false;
 
@@ -42,6 +43,6 @@ public class Player extends MoveableEntity {
 		if (pressed) {
 			move(direction, delta);
 		}
-		super.update(container, delta);
+		super.update(container, delta, vault);
 	}
 }

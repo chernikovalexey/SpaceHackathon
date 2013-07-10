@@ -35,6 +35,14 @@ public class Camera {
 		return yy - getY();
 	}
 
+	public int getScreenWidth() {
+		return width;
+	}
+
+	public int getScreenHeight() {
+		return height;
+	}
+
 	public void shake(int shakes) {
 		shakeAmplitude += shakes;
 	}

@@ -36,7 +36,7 @@ public class Entity {
 		return cellY;
 	}
 
-	public void update(GameContainer container, int delta) {
+	public void update(GameContainer container, int delta, EntityGridVault vault) {
 	}
 
 	public void render(GameContainer container, Graphics g) {

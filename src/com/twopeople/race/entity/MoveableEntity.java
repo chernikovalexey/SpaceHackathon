@@ -28,23 +28,32 @@ public class MoveableEntity extends Entity {
 		this.ySpeed = ys;
 	}
 
+	public boolean isMoving() {
+		return velocity.x > 0 || velocity.y > 0;
+	}
+
 	@Override
-	public void update(GameContainer container, int delta) {
+	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		acceleration.x = -(velocity.x * friction) + direction.x * xSpeed + inertness.x;
 		acceleration.y = -(velocity.y * friction) + direction.y * ySpeed + inertness.y;
 
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
 
-		inertness.x = velocity.x * delta * 5f;
-		inertness.y = velocity.y * delta * 5f;
+		//inertness.x = velocity.x * delta * 5f;
+		//inertness.y = velocity.y * delta * 5f;
 
 		x += velocity.x * (delta * .01f) * 5;
 		y += velocity.y * (delta * .01f) * 5;
 
+		if (isMoving()) {
+			vault.moved(this);
+		}
+
 		System.out.println(acceleration.x + ", " + acceleration.y);
 		System.out.println(velocity.x + ", " + velocity.y);
 		System.out.println(x + ", " + y);
+		System.out.println(getCellX() + ", " + getCellY());
 		System.out.println("=============");
 	}
 
