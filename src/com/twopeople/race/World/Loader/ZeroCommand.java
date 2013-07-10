@@ -1,6 +1,7 @@
 package com.twopeople.race.World.Loader;
 
 import com.twopeople.race.World.World;
+import org.newdawn.slick.Color;
 
 /**
  * Created with podko_000.
@@ -11,7 +12,7 @@ import com.twopeople.race.World.World;
  */
 public class ZeroCommand implements IWorldColorCommand {
     @Override
-    public void execute(World world, int px, int py) {
+    public void execute(World world, int px, int py, Color color) {
 
     }
 }

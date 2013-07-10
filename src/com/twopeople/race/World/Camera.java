@@ -43,6 +43,11 @@ public class Camera {
 		return height;
 	}
 
+    public void centerOn(Entity entity) {
+       targetX = entity.x - width/2 - entity.w/2;
+        targetY = entity.y - height/2 - entity.h/2;
+    }
+
 	public void shake(int shakes) {
 		shakeAmplitude += shakes;
 	}

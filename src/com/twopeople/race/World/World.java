@@ -27,7 +27,7 @@ public class World {
 		this.entities = new EntityGridVault(128, 128, 12, 12);
         this.borders=new EntityGridVault(256,256, 6, 6);
 
-		entities.add(new Player(this, 10, 10));
+		entities.add(new Player(this, 250, 250));
 	}
 
 	public void setMetaData(WorldMetaData data) {

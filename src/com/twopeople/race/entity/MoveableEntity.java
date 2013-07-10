@@ -34,8 +34,8 @@ public class MoveableEntity extends Entity {
 
 	@Override
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
-		acceleration.x = (float) (-(velocity.x * friction) + Math.cos(direction.x) * acc);
-		acceleration.y = (float) (-(velocity.y * friction) + Math.sin(direction.y) * acc);
+		acceleration.x = (float) (-(velocity.x * friction) +(direction.x) * acc);
+		acceleration.y = (float) (-(velocity.y * friction) + (direction.y) * acc);
 
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;

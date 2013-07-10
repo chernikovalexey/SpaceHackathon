@@ -15,9 +15,9 @@ public class Player extends MoveableEntity {
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
 
-		setFriction(0.9f);
-		setMaxXSpeed(10f);
-		setMaxYSpeed(10f);
+		setFriction(2.5f);
+		setMaxXSpeed(2f);
+		setMaxYSpeed(2f);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class Player extends MoveableEntity {
 			acc += 0.1f;
 		}
 
-		direction.set((float) Math.cos(angle), (float) Math.sin(angle));
+		direction.set((float) Math.cos(Math.toRadians (angle + 90)), (float) Math.sin(Math.toRadians( angle+90)));
 
 		move(direction, delta);
 		super.update(container, delta, vault);
