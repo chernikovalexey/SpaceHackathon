@@ -1,5 +1,7 @@
 package com.twopeople.race.World;
 
+import com.twopeople.race.entity.Entity;
+
 public class Camera {
 	private int width, height;
 	private float targetX, targetY;
@@ -43,10 +45,18 @@ public class Camera {
 		return height;
 	}
 
-    public void centerOn(Entity entity) {
-       targetX = entity.x - width/2 - entity.w/2;
-        targetY = entity.y - height/2 - entity.h/2;
-    }
+	public void setTargetX(float x) {
+		this.targetX = x;
+	}
+
+	public void setTargetY(float z) {
+		this.targetY = z;
+	}
+
+	public void centerOn(Entity entity) {
+		setTargetX(entity.x - getScreenWidth() * .2f);
+		setTargetY(entity.y - entity.y - getScreenHeight() * .25f);
+	}
 
 	public void shake(int shakes) {
 		shakeAmplitude += shakes;

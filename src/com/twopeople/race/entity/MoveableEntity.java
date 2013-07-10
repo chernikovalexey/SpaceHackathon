@@ -12,6 +12,8 @@ public class MoveableEntity extends Entity {
 	private Vector2f velocity = new Vector2f(0, 0);
 	private Vector2f acceleration = new Vector2f(0, 0);
 
+	private boolean isCameraOwner = false;
+
 	public MoveableEntity(World world, float x, float y, int w, int h) {
 		super(world, x, y, w, h);
 	}
@@ -28,13 +30,17 @@ public class MoveableEntity extends Entity {
 		this.maxYSpeed = ys;
 	}
 
+	public void setCameraOwner(boolean o) {
+		this.isCameraOwner = o;
+	}
+
 	public boolean isMoving() {
 		return velocity.x > 0 || velocity.y > 0;
 	}
 
 	@Override
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
-		acceleration.x = (float) (-(velocity.x * friction) +(direction.x) * acc);
+		acceleration.x = (float) (-(velocity.x * friction) + (direction.x) * acc);
 		acceleration.y = (float) (-(velocity.y * friction) + (direction.y) * acc);
 
 		velocity.x += acceleration.x * delta * .08f;
@@ -45,6 +51,10 @@ public class MoveableEntity extends Entity {
 
 		if (isMoving()) {
 			vault.moved(this);
+		}
+
+		if (isCameraOwner) {
+			//world.getCamera().centerOn(this);
 		}
 
 		// System.out.println(acceleration.x + ", " + acceleration.y);

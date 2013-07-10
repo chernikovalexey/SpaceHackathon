@@ -18,6 +18,7 @@ public class Player extends MoveableEntity {
 		setFriction(2.5f);
 		setMaxXSpeed(2f);
 		setMaxYSpeed(2f);
+		setCameraOwner(true);
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class Player extends MoveableEntity {
 			acc += 0.1f;
 		}
 
-		direction.set((float) Math.cos(Math.toRadians (angle + 90)), (float) Math.sin(Math.toRadians( angle+90)));
+		direction.set((float) Math.cos(Math.toRadians(angle + 90)), (float) Math.sin(Math.toRadians(angle + 90)));
 
 		move(direction, delta);
 		super.update(container, delta, vault);

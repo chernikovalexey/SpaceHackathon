@@ -9,10 +9,10 @@ import com.twopeople.race.World.Camera;
 import com.twopeople.race.World.World;
 
 public class Entity {
-	private World world;
-	protected float x, y;
-	protected int w, h;
-	private int cellX, cellY;
+	public World world;
+	public float x, y;
+	public int w, h;
+	public int cellX, cellY;
 	public float angle = 0f;
 
 	protected Vector2f direction = new Vector2f(0, 0);

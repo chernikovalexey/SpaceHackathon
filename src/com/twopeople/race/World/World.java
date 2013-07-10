@@ -20,12 +20,12 @@ public class World {
 	public static final int TILE_SIZE = 16;
 
 	private WorldMetaData metaData;
-    private EntityGridVault borders;
+	private EntityGridVault borders;
 
 	public World(Camera camera) {
 		this.camera = camera;
 		this.entities = new EntityGridVault(128, 128, 12, 12);
-        this.borders=new EntityGridVault(256,256, 6, 6);
+		this.borders = new EntityGridVault(256, 256, 6, 6);
 
 		entities.add(new Player(this, 250, 250));
 	}
@@ -58,21 +58,19 @@ public class World {
 		}
 	}
 
-    public void addEntity(Entity e)
-    {
-        entities.add(e);
-    }
+	public void addEntity(Entity e) {
+		entities.add(e);
+	}
 
-    public void addBorder(BorderBlock border)
-    {
-        borders.add(border);
-    }
+	public void addBorder(BorderBlock border) {
+		borders.add(border);
+	}
 
 	public Camera getCamera() {
 		return camera;
 	}
 
-    public EntityGridVault getBorders() {
-        return borders;
-    }
+	public EntityGridVault getBorders() {
+		return borders;
+	}
 }
