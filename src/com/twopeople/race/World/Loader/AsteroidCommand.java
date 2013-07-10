@@ -1,5 +1,6 @@
-package com.twopeople.race.World;
+package com.twopeople.race.World.Loader;
 
+import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
 
@@ -13,8 +14,8 @@ import com.twopeople.race.entity.Entity;
 public class AsteroidCommand implements IWorldColorCommand {
 
     @Override
-    public Entity execute(World world) {
-        //Asteroid asteroid=new Asteroid();
-          return null;
+    public void execute(World world, int px, int py) {
+        Asteroid asteroid = new Asteroid(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
+        //todo: add asteroid to world
     }
 }

@@ -1,11 +1,11 @@
-package com.twopeople.race.World;
+package com.twopeople.race.World.Loader;
 
+import com.twopeople.race.World.World;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -17,28 +17,22 @@ import java.io.IOException;
  */
 public class WorldLoader {
     private WorldMetaData metaData;
+    private World _world;
 
-
-    public WorldLoader(String dirName) throws IOException, ClassNotFoundException {
-        metaData = WorldMetaData.load(dirName + "/meta.bin");
-        _parseImage(dirName + "/data.png");
+    public WorldLoader(String dirName, World world) throws IOException, ClassNotFoundException {
+        metaData = WorldMetaData.load(dirName + "\\meta.bin");
+        _world=world;
+        _parseImage(dirName + "\\data.png");
     }
 
     private void _parseImage(String fileName) throws IOException {
         FileInputStream fs = new FileInputStream(fileName);
         Texture t = TextureLoader.getTexture("PNG", fs);
 
-
         Color pixelColor;
         for(int i=0;i<t.getImageWidth();i++)
-        {
             for(int j=0;j<t.getImageHeight();j++)
-            {
-                pixelColor = _getPixelColor(t,i,j);
-
-            }
-        }
-
+                WorldColor.commands.get(_getPixelColor(t,i,j)).execute(_world, i, j);
     }
 
     private byte[] data;

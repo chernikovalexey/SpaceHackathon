@@ -1,4 +1,4 @@
-package com.twopeople.race.World;
+package com.twopeople.race.World.Loader;
 
 import org.newdawn.slick.Color;
 

@@ -1,5 +1,6 @@
-package com.twopeople.race.World;
+package com.twopeople.race.World.Loader;
 
+import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Entity;
 
 /**
@@ -10,5 +11,5 @@ import com.twopeople.race.entity.Entity;
  * To change this template use File | Settings | File Templates.
  */
 public interface IWorldColorCommand {
-    public Entity execute(World world);
+    public void execute(World world, int px, int py);
 }
