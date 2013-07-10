@@ -11,6 +11,7 @@ public class Entity {
 	private World world;
 	protected float x, y;
 	protected int w, h;
+	private int cellX, cellY;
 
 	protected Vector2f direction = new Vector2f(0, 0);
 
@@ -20,6 +21,19 @@ public class Entity {
 		this.y = y;
 		this.w = w;
 		this.h = h;
+	}
+
+	public void setCell(int cx, int cy) {
+		this.cellX = cx;
+		this.cellY = cy;
+	}
+
+	public int getCellX() {
+		return cellX;
+	}
+
+	public int getCellY() {
+		return cellY;
 	}
 
 	public void update(GameContainer container, int delta) {

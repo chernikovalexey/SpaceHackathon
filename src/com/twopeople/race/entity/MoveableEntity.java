@@ -10,6 +10,7 @@ public class MoveableEntity extends Entity {
 	private float xSpeed, ySpeed;
 	private Vector2f velocity = new Vector2f(0, 0);
 	private Vector2f acceleration = new Vector2f(0, 0);
+	private Vector2f inertness = new Vector2f(0, 0);
 
 	public MoveableEntity(World world, float x, float y, int w, int h) {
 		super(world, x, y, w, h);
@@ -29,11 +30,14 @@ public class MoveableEntity extends Entity {
 
 	@Override
 	public void update(GameContainer container, int delta) {
-		acceleration.x = -(velocity.x * friction) + direction.x * xSpeed;
-		acceleration.y = -(velocity.y * friction) + direction.y * ySpeed;
+		acceleration.x = -(velocity.x * friction) + direction.x * xSpeed + inertness.x;
+		acceleration.y = -(velocity.y * friction) + direction.y * ySpeed + inertness.y;
 
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
+
+		inertness.x = velocity.x * delta * 5f;
+		inertness.y = velocity.y * delta * 5f;
 
 		x += velocity.x * (delta * .01f) * 5;
 		y += velocity.y * (delta * .01f) * 5;
