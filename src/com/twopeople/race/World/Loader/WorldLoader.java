@@ -28,7 +28,7 @@ public class WorldLoader {
 
     public WorldLoader(String dirName, World world) throws IOException, ClassNotFoundException, SlickException {
         metaData = WorldMetaData.load(dirName + "\\meta.bin");
-        _world=world;
+        _world = world;
         _parseImage(dirName + "\\data.png");
         _sortBorders();
     }
@@ -38,57 +38,55 @@ public class WorldLoader {
 
         List<Entity> borders = v.getAll();
 
-        List<BorderBlock> left=new ArrayList<BorderBlock>();
-        List<BorderBlock> right=new ArrayList<BorderBlock>();
+        List<BorderBlock> left = new ArrayList<BorderBlock>();
+        List<BorderBlock> right = new ArrayList<BorderBlock>();
 
         BorderBlock block;
-        for(Entity border: borders)
-        {
-            block = (BorderBlock)border;
-            if(block.position == BorderBlock.BlockPosition.Left)
+        for (Entity border : borders) {
+            block = (BorderBlock) border;
+            if (block.position.equals(BorderBlock.BlockPosition.Left))
                 left.add(block);
             else
                 right.add(block);
         }
 
         left = _orderBlocks(left);
-        right= _orderBlocks(right);
+        right = _orderBlocks(right);
 
         borders.clear();
 
-        for(BorderBlock b:left)
+        for (BorderBlock b : left)
             borders.add(b);
 
-        for(BorderBlock b:right)
+        for (BorderBlock b : right)
             borders.add(b);
     }
 
     private List<BorderBlock> _orderBlocks(List<BorderBlock> blocks) {
-        List<BorderBlock> result=new ArrayList<BorderBlock>();
+        List<BorderBlock> result = new ArrayList<BorderBlock>();
 
-        BorderBlock a,b = null;
-        float minDist,d;
-        int minJ = 0;
-        for(int i=0;i<blocks.size();i++)
-        {
-            a=blocks.get(i);
+        BorderBlock a, b = null;
+        float minDist, d;
+        BorderBlock minJ = null;
+
+
+        for (int i = 0; i < blocks.size(); i++) {
+            a = blocks.get(i);
             result.add(a);
-            minDist=Float.MAX_VALUE;
-            for(int j=0;j<blocks.size();j++)
-            {
-                b=blocks.get(j);
-                if(i==j)
+            minDist = Float.MAX_VALUE;
+            for (int j = 0; j < blocks.size(); j++) {
+                b = blocks.get(j);
+                if (i == j)
                     continue;
 
                 d = a.getDistanceTo(b);
-                if(d<minDist)
-                {
-                    minDist=d;
-                    minJ=j;
+                if (d < minDist) {
+                    minDist = d;
+                    minJ = b;
                 }
             }
             result.add(b);
-            result.remove(i);
+            result.remove(a);
             result.remove(minJ);
         }
 
@@ -97,17 +95,19 @@ public class WorldLoader {
 
     private void _parseImage(String fileName) throws IOException, SlickException {
 
-        Image img=new Image(fileName);
+        Image img = new Image(fileName);
         Color pixelColor;
-        for(int i=0;i<img.getWidth();i++)
-            for(int j=0;j<img.getHeight();j++)
-            {
-                pixelColor=img.getColor(i, j);
+        for (int i = 0; i < img.getWidth(); i++)
+            for (int j = 0; j < img.getHeight(); j++) {
+                pixelColor = img.getColor(i, j);
+
                 WorldColor.commands.get(pixelColor).execute(_world, i, j, pixelColor);
+
             }
     }
 
     private byte[] data;
+
     public WorldMetaData getMetaData() {
         return metaData;
     }
