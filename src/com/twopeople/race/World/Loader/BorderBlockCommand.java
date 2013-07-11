@@ -17,7 +17,7 @@ public class BorderBlockCommand implements IWorldColorCommand {
     @Override
     public void execute(World world, int px, int py, Color pixel) {
         BorderBlock block = new BorderBlock(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
-        if (pixel == WorldColor.R_BORDER_BLOCK)
+        if (pixel.equals(WorldColor.R_BORDER_BLOCK))
             block.position = BorderBlock.BlockPosition.Right;
         else
             block.position = BorderBlock.BlockPosition.Left;

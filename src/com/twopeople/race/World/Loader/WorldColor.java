@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class WorldColor {
 
-    public static final Color L_BORDER_BLOCK = new Color(254, 0, 0);
+    public static final Color L_BORDER_BLOCK = new Color(128, 0, 0);
     public static final Color R_BORDER_BLOCK = new Color(255, 0, 0);
     public static final Color asteroid = new Color(0, 255, 0);
     public static final Color zero = Color.black;
