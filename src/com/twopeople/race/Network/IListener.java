@@ -1,5 +1,7 @@
 package com.twopeople.race.Network;
 
+import com.twopeople.race.World.World;
+
 import java.net.Inet4Address;
 import java.net.InetAddress;
 
@@ -12,4 +14,5 @@ import java.net.InetAddress;
  */
 public interface IListener {
     public void received(InetAddress address,Request data);
+    public World getWorld();
 }

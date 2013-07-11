@@ -61,7 +61,7 @@ public class UdpClient implements Runnable {
         try {
             socket.receive(packet);
             Request r=new Request();
-            r.read(packet.getData());
+            r.read(packet.getData(), listener);
             listener.received(packet.getAddress(), r);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

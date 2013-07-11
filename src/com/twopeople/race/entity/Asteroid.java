@@ -14,8 +14,8 @@ import com.twopeople.race.World.World;
 public class Asteroid extends MoveableEntity {
 	private int skippedTicks = 0;
 	private final int SKIP_TICKS = 6;
-	private int asteroidType = 0;
-	private float rotationSpeed;
+	public int asteroidType = 0;
+    public float rotationSpeed;
 
 	public Asteroid(World world, float x, float y) {
 		super(world, x, y, 128, 128);
@@ -39,6 +39,11 @@ public class Asteroid extends MoveableEntity {
 		direction.x = (float) Math.cos(Math.toRadians(world.getRandom().nextInt(360)));
 		direction.y = (float) Math.sin(Math.toRadians(world.getRandom().nextInt(360)));
 	}
+
+    public Asteroid()
+    {
+
+    }
 
 	@Override
 	public Shape getBounds() {
