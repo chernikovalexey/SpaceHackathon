@@ -53,7 +53,7 @@ public class WorldLoader {
     }
 
     public static WorldSize preload(String name) {
-        _preloadedPath = name;
+        _preloadedPath = name + "\\data.png";
         try {
             _preloadedImage = new Image(_preloadedPath);
         } catch (SlickException e) {
