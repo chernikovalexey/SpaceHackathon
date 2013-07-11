@@ -54,6 +54,10 @@ public class Entity {
 		this.parent = e;
 	}
 
+	public void setAngle(float angle) {
+		this.angle = angle;
+	}
+
 	public void setCell(int cx, int cy) {
 		this.cellX = cx;
 		this.cellY = cy;

@@ -51,7 +51,7 @@ public class Player extends MoveableEntity {
 
 	@Override
 	public Shape[] getBBSkeleton() {
-		Rectangle r = new Rectangle((int) x, (int) y + 5, w, h - 10);
+		Rectangle r = new Rectangle((int) x, (int) y + 5 + 15, w, h - 10 - 15);
 		Transform transformation = Transform.createRotateTransform((float) Math.toRadians(angle));
 		r.transform(transformation);
 		Triangulator tr = r.getTriangles();
@@ -63,8 +63,9 @@ public class Player extends MoveableEntity {
 			v3 = tr.getTrianglePoint(i, 2);
 			polygons[i] = new Polygon(new float[] { v1[0], v1[1], v2[0], v2[1], v3[0], v3[1] });
 		}
-		// nosePoly = new Polygon(new float[] {});
-		// polygons[polygons.length - 1] = nosePoly;
+		Polygon nosePoly = new Polygon(new float[] { x, y + 5 + 15, x + w, y + 5 + 15, x + w / 2, y + 5 });
+		nosePoly.transform(transformation);
+		polygons[polygons.length - 1] = nosePoly;
 		return polygons;
 	}
 
