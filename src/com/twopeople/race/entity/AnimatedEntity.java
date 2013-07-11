@@ -15,6 +15,9 @@ public class AnimatedEntity extends MoveableEntity {
 	private Animation animation;
 	private int animSpeed = 200;
 
+	public AnimatedEntity() {
+	}
+
 	public AnimatedEntity(World world, float x, float y, int w, int h) {
 		super(world, x, y, w, h);
 	}
@@ -42,12 +45,6 @@ public class AnimatedEntity extends MoveableEntity {
 	}
 
 	public void render(GameContainer container, Graphics g, Camera camera) {
-		Image image = animation.getCurrentFrame();
-		if (rotatable()) {
-			float[] rc = getRotationCenter();
-			image.setCenterOfRotation(rc[0], rc[1]);
-			image.rotate(angle);
-		}
-		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+		animation.draw(camera.getScreenX(x), camera.getScreenY(y));
 	}
 }

@@ -16,6 +16,9 @@ public class MoveableEntity extends Entity {
 	private boolean isCameraOwner = false;
 	private boolean isConstantSpeed = false;
 
+	public MoveableEntity() {
+	}
+
 	public MoveableEntity(World world, float x, float y, int w, int h) {
 		super(world, x, y, w, h);
 	}
@@ -56,8 +59,8 @@ public class MoveableEntity extends Entity {
 		acceleration.x = (float) (-(velocity.x * friction) - direction.x * speed);
 		acceleration.y = (float) (-(velocity.y * friction) - direction.y * speed);
 
-		velocity.x += acceleration.x * delta * .08f;
-		velocity.y += acceleration.y * delta * .08f;
+		velocity.x += acceleration.x * delta * .25f;
+		velocity.y += acceleration.y * delta * .25f;
 
 		move(velocity.x * (delta * .01f) * 2.5f, velocity.y * (delta * .01f) * 2.5f);
 

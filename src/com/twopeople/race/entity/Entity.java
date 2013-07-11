@@ -25,6 +25,9 @@ public class Entity {
 
 	protected Vector2f direction = new Vector2f(0, 0);
 
+	public Entity() {
+	}
+
 	public Entity(World world, float x, float y, int w, int h) {
 		this.world = world;
 		setCoordinates(x, y);
@@ -87,6 +90,14 @@ public class Entity {
 		return false;
 	}
 
+	public float getCenterX() {
+		return x + w / 2;
+	}
+
+	public float getCenterY() {
+		return y + h / 2;
+	}
+
 	public float[] getRotationCenter() {
 		return new float[] { w / 2, h / 2 };
 	}
@@ -119,7 +130,7 @@ public class Entity {
 	}
 
 	public void ranOutsideWorld() {
-		remove = true;
+		// remove = true;
 	}
 
 	public float getDistanceTo(Entity entity) {

@@ -55,7 +55,7 @@ public class Camera {
 		this.targetX = x;
 		if (mapWidth != -1) {
 			if (targetX < 0) targetX = 0;
-			//if (targetX + width > mapWidth) targetX = mapWidth - width;
+			if (targetX + width > mapWidth) targetX = mapWidth - width;
 		}
 	}
 
@@ -74,9 +74,9 @@ public class Camera {
 	public float getAbsoluteY(float y) {
 		return this.y + y;
 	}
-	
+
 	public void centerOn(Entity entity) {
-		setTargetX(entity.x - entity.w / 2 - getScreenWidth() * .25f);
+		setTargetX(entity.x - entity.w / 2 - getScreenWidth() * .35f);
 		setTargetY(entity.y - entity.h / 2 - getScreenHeight() * .3f);
 	}
 

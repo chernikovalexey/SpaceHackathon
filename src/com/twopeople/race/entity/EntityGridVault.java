@@ -69,10 +69,10 @@ public class EntityGridVault {
 	public ArrayList<Entity> getVisible(Camera camera) {
 		ArrayList<Entity> visible = new ArrayList<Entity>();
 
-		int sx = (int) (camera.getX() / cellWidth) - 1;
-		int sy = (int) (camera.getY() / cellHeight) - 1;
-		int ex = sx + (int) (camera.getScreenWidth() / cellWidth) + 1;
-		int ey = sy + (int) (camera.getScreenHeight() / cellHeight) + 1;
+		int sx = (int) (camera.getX() / cellWidth) - 2;
+		int sy = (int) (camera.getY() / cellHeight) - 2;
+		int ex = sx + (int) (camera.getScreenWidth() / cellWidth) + 2;
+		int ey = sy + (int) (camera.getScreenHeight() / cellHeight) + 2;
 		if (sx < 0) sx = 0;
 		if (sy < 0) sy = 0;
 		if (ex >= cellsX) ex = cellsX - 1;

@@ -23,12 +23,15 @@ public class Player extends AnimatedEntity {
 	private Turret turret;
 	private boolean controllable = false;
 
+	public Player() {
+	}
+
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
 
 		setCollisionType(CollisionType.All);
 		setFriction(.032f);
-		setMaxSpeed(0.15f);
+		setMaxSpeed(0.55f);
 		setCameraOwner(true);
 		setAnimation(Art.ships, 0, 0, 0, 4);
 		turret = new Turret(world, this);
@@ -90,7 +93,7 @@ public class Player extends AnimatedEntity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 0.01f;
+		float k = 1f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));
@@ -99,7 +102,7 @@ public class Player extends AnimatedEntity {
 			rotate(getRealSpeed() / (delta * k));
 		}
 		if (input.isKeyDown(Input.KEY_W)) {
-			speed += 0.275f;
+			speed += 0.175f;
 		}
 		if (input.isKeyDown(Input.KEY_S)) {
 			speed -= 0.325f;
@@ -120,7 +123,8 @@ public class Player extends AnimatedEntity {
 		Image image = Art.ships.getSprite(0, 0);
 		image.setCenterOfRotation(w / 2, h / 2 + 5);
 		image.rotate(angle);
-		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+		g.setAntiAlias(true);
+		g.drawImage(image, camera.getScreenX(x), camera.getScreenY(y));
 
 		turret.render(container, g, camera);
 

@@ -14,7 +14,7 @@ public class Game extends BasicGameState {
 	private Camera camera;
 
 	private void startGame(GameContainer container) {
-		camera = new Camera(container.getScreenWidth(), container.getScreenHeight());
+		camera = new Camera(container.getWidth(), container.getHeight());
 		world = new World(camera);
 	}
 

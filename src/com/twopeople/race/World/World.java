@@ -14,8 +14,11 @@ import com.twopeople.race.World.Loader.WorldMetaData;
 import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
+import com.twopeople.race.entity.Projectile;
 import com.twopeople.race.entity.StartPoint;
 import com.twopeople.race.entity.Interior.BorderBlock;
+import com.twopeople.race.entity.Interior.BorderBlock.BlockPosition;
+import com.twopeople.race.entity.Interior.BorderLaser;
 import com.twopeople.race.entity.Unit.Player;
 
 public class World {
@@ -27,6 +30,7 @@ public class World {
 	private EntityGridVault entities;
 	private ArrayList<Player> playersPtr = new ArrayList<Player>();
 	private ArrayList<Entity> borders = new ArrayList<Entity>();
+	private EntityGridVault projectiles;
 
 	public static final int TILE_SIZE = 16;
 	private int width = 4540, height = 1980;
@@ -41,7 +45,8 @@ public class World {
 		setHeight(size.height);
 
 		this.background = new EntityGridVault(256, 256, width, height);
-		this.entities = new EntityGridVault(128, 128, width, height);
+		this.entities = new EntityGridVault(800, 600, width, height);
+		this.projectiles = new EntityGridVault(256, 256, width, height);
 
 		WorldLoader.load("res/maps/map001", this);
 
@@ -50,7 +55,21 @@ public class World {
 		player.setCoordinates(startPoints.get(0).x, startPoints.get(0).y);
 		player.setControllable(true);
 		addPlayer(player);
-		addEntity(new Asteroid(this, 360, 290));
+
+		Entity[] left = findBorderBlocks(BorderBlock.BlockPosition.Left);
+		for (int i = 0; i < left.length; ++i) {
+			if (i < left.length - 1) {
+				addEntity(new BorderLaser(this, left[i], left[i + 1]));
+			}
+		}
+
+		Entity[] right = findBorderBlocks(BorderBlock.BlockPosition.Right);
+		for (int i = 0; i < right.length; ++i) {
+			if (i < right.length - 1) {
+				addEntity(new BorderLaser(this, right[i], right[i + 1]));
+			}
+		}
+
 		for (int x = 0; x < 256 * 6; x += 10) {
 			for (int y = 0; y < 256 * 6; y += 16) {
 				if (random.nextInt(128) % 2 == 0) {
@@ -58,6 +77,21 @@ public class World {
 				}
 			}
 		}
+	}
+
+	private Entity[] findBorderBlocks(BlockPosition pos) {
+		ArrayList<Entity> db = new ArrayList<Entity>();
+		for (Entity block : borders) {
+			BorderBlock b = (BorderBlock) block;
+			if (b.position.equals(pos)) {
+				db.add(b);
+			}
+		}
+		Entity[] blocks = new Entity[db.size()];
+		for (int i = 0; i < db.size(); ++i) {
+			blocks[i] = db.get(i);
+		}
+		return blocks;
 	}
 
 	public void addStartPoint(StartPoint point) {
@@ -69,9 +103,9 @@ public class World {
 	}
 
 	public void update(GameContainer container, int delta) {
-		System.out.println("wh " + playersPtr.get(0).x + " " + playersPtr.get(0).y);
 		updateEntitiesGrid(background, container, delta, true);
 		updateEntitiesGrid(entities, container, delta, false);
+		updateEntitiesGrid(projectiles, container, delta, false);
 		updateEntitiesList(borders, container, delta);
 	}
 
@@ -98,66 +132,31 @@ public class World {
 	public void render(GameContainer container, Graphics g) {
 		renderEntitiesGrid(background, container, g);
 		renderEntitiesGrid(entities, container, g);
+		renderEntitiesGrid(projectiles, container, g);
+
+		// renderVaultGrid(g, entities);
+
 		renderEntitiesList(borders, container, g);
 
-		renderVaultGrid(g, entities);
-
-		Entity[] left = new Entity[borders.size()];
-		int li = 0;
-		for (Entity block : borders) {
-			BorderBlock b = (BorderBlock) block;
-			if (b.position == BorderBlock.BlockPosition.Left) {
-				left[li++] = b;
-			}
-		}
-
-		Entity[] right = new Entity[borders.size()];
-		int ri = 0;
-		for (Entity block : borders) {
-			BorderBlock b = (BorderBlock) block;
-			if (b.position == BorderBlock.BlockPosition.Right) {
-				right[ri++] = b;
-			}
-		}
-
-		g.setColor(Color.red);
-		for (int i = 0; i < li; ++i) {
-			if (i < li - 1) {
-				g.drawLine(camera.getScreenX(left[i].x), camera.getScreenY(left[i].y),
-						camera.getScreenX(left[i + 1].x), camera.getScreenY(left[i + 1].y));
-			}
-		}
-		if (metaData.haveLaps()) {
-			g.drawLine(camera.getScreenX(left[0].x), camera.getScreenY(left[0].y), camera.getScreenX(left[li - 1].x),
-					camera.getScreenY(left[li - 1].y));
-		}
-
-		g.setColor(Color.green);
-		for (int i = 0; i < ri; ++i) {
-			if (i < ri - 1) {
-				g.drawLine(camera.getScreenX(right[i].x), camera.getScreenY(right[i].y),
-						camera.getScreenX(right[i + 1].x), camera.getScreenY(right[i + 1].y));
-			}
-		}
-		if (metaData.haveLaps()) {
-			g.drawLine(camera.getScreenX(right[0].x), camera.getScreenY(right[0].y),
-					camera.getScreenX(right[ri - 1].x), camera.getScreenY(right[ri - 1].y));
-		}
-
+		g.setColor(Color.white);
 		g.drawString("background: " + background.size(), 10, 30);
 		g.drawString("entities: " + entities.size(), 10, 50);
 		g.drawString("borders: " + borders.size(), 10, 70);
+		g.drawString("projectiles: " + projectiles.size(), 10, 90);
 	}
 
 	private void renderVaultGrid(Graphics g, EntityGridVault vault) {
-		for (int x = 0; x < vault.cellsX; ++x) {
-			for (int y = 0; y < vault.cellsY; ++y) {
+		for (int x = 0; x <= vault.cellsX; ++x) {
+			for (int y = 0; y <= vault.cellsY; ++y) {
 				float xo = x * vault.cellWidth;
 				float yo = y * vault.cellHeight;
 				if (camera.isVisible(new Entity(this, xo, yo, vault.cellWidth, vault.cellHeight))) {
 					g.drawRect(camera.getScreenX(xo), camera.getScreenY(yo), xo + vault.cellWidth, yo
 							+ vault.cellHeight);
-					g.drawString("" + vault.getAt(x, y).size(), camera.getScreenX(xo + 5), camera.getScreenY(yo + 5));
+					if (x != vault.cellsX && y != vault.cellsY) {
+						g.drawString("" + vault.getAt(x, y).size(), camera.getScreenX(xo + 5),
+								camera.getScreenY(yo + 5));
+					}
 				}
 			}
 		}
@@ -195,6 +194,10 @@ public class World {
 
 	public void addBorder(BorderBlock border) {
 		borders.add(border);
+	}
+
+	public void addProjectile(Projectile p) {
+		projectiles.add(p);
 	}
 
 	public Camera getCamera() {
