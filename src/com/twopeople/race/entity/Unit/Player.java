@@ -78,9 +78,10 @@ public class Player extends MoveableEntity {
 		direction.set((float) Math.cos(Math.toRadians(angle + 90)), (float) Math.sin(Math.toRadians(angle + 90)));
 
 		super.update(container, delta, vault);
-		
+
 		turret.update(container, delta, vault);
-		turret.updateDirection(input.getMouseX(), input.getMouseY());
+		turret.updateDirection(world.getCamera().getAbsoluteX(input.getMouseX()),
+				world.getCamera().getAbsoluteY(input.getMouseY()));
 	}
 
 	@Override

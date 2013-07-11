@@ -3,6 +3,7 @@ package com.twopeople.race.entity.Unit;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
 
 import com.twopeople.race.Art;
 import com.twopeople.race.World.Camera;
@@ -17,7 +18,10 @@ public class Turret extends Entity {
 	}
 
 	public void updateDirection(float ms, float my) {
-		angle = (float) Math.toDegrees(Math.atan2(my, ms));
+		Vector2f playerDir = (new Vector2f(ms - x, my - y)).normalise();
+		direction.x = playerDir.x;
+		direction.y = playerDir.y;
+		angle = (float)direction.getTheta()+90;
 		System.out.println(angle);
 	}
 
