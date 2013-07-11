@@ -59,14 +59,13 @@ public class MoveableEntity extends Entity {
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
 
-		x += velocity.x * (delta * .001f) * 2.5f;
-		y += velocity.y * (delta * .001f) * 2.5f;
-		// move(velocity.x * (delta * .001f) * 2.5f, velocity.y * (delta *
-		// .001f) * 2.5f);
+		// x += velocity.x * (delta * .01f) * 2.5f;
+		// y += velocity.y * (delta * .01f) * 2.5f;
+		move(velocity.x * (delta * .01f) * 2.5f, velocity.y * (delta * .01f) * 2.5f);
 
-		//if (!isConstantSpeed) {
-			speed *= delta * friction * 3f;
-	//}
+		// if (!isConstantSpeed) {
+		speed -= getMaxSpeed() * friction;
+		// }
 
 		if (isMoving()) {
 			vault.moved(this);

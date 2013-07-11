@@ -28,7 +28,7 @@ public class Asteroid extends MoveableEntity {
 
 	@Override
 	public Shape getBounds() {
-		return new Circle(x + w / 2, y + h / 2, w);
+		return new Circle(x + w / 2, y + h / 2, w-24);
 	}
 
 	@Override

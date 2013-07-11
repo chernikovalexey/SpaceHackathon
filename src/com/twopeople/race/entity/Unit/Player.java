@@ -6,6 +6,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Transform;
 
 import com.twopeople.race.Art;
 import com.twopeople.race.World.Camera;
@@ -19,21 +20,23 @@ public class Player extends MoveableEntity {
 		super(world, x, y, 64, 64);
 
 		setCollisionType(CollisionType.All);
-		setFriction(0.025f);
-		setMaxSpeed(8.5f);
+		setFriction(.022f);
+		setMaxSpeed(0.09f);
 		setCameraOwner(true);
 	}
 
 	@Override
 	public Shape getBounds() {
-		return new Rectangle(x, y, w, h);
+		Rectangle rect  = new Rectangle(x, y, w, h);
+		rect.transform(Transform.createRotateTransform((float)Math.toRadians(angle)));
+		return rect;
 	}
 
 	@Override
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 0.25f;
+		float k = 0.01f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));
