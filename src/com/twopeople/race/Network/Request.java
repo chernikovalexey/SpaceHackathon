@@ -5,6 +5,7 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.serializers.FieldSerializer;
+import com.twopeople.race.World.Loader.WorldMetaData;
 import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
@@ -37,6 +38,7 @@ public class Request {
     public ArrayList<BorderBlock> sortedBlocks;
     public ArrayList<Player> players;
     public ArrayList<InetSocketAddress> connections;
+    public WorldMetaData metaData;
 
     public static Request connectionRequest(Player p) {
         Request r = new Request();
@@ -75,6 +77,7 @@ public class Request {
                 output.writeString(nickName);
                 break;
             case Type.WorldData:
+                _writeMetaData(metaData, output);
                 _writeConnections(connections, output);
                 _writePlayers(players, output);
                 _writeAsteroids(asteroids, output);
@@ -96,13 +99,31 @@ public class Request {
                 nickName = input.readString();
                 break;
             case Type.WorldData:
-
+                listener.getWorld().setMetaData(_readMetaData(input));
                 _readConnections(input);
                 _readPlayers(listener.getWorld(), input);
                 _readAsteroids(listener.getWorld(), input);
                 _readBorders(listener.getWorld(), input);
                 break;
         }
+    }
+
+    private void _writeMetaData(WorldMetaData metaData, Output output) {
+        output.writeString(metaData.getName());
+        output.writeBoolean(metaData.haveLaps());
+        output.writeInt(metaData.getLaps());
+        output.writeInt(metaData.getNumPlayers());
+    }
+
+
+    private WorldMetaData _readMetaData(Input input) {
+        metaData=new WorldMetaData();
+        metaData.setName(input.readString());
+        metaData.setHaveLaps(input.readBoolean());
+        metaData.setLaps(input.readInt());
+        metaData.setNumPlayers(input.readInt());
+
+        return this.metaData;
     }
 
     private void _writeConnections(ArrayList<InetSocketAddress> connections, Output output) {

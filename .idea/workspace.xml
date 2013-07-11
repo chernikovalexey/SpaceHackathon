@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" name="Default" comment="Network connection part 2&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/Asteroid.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Asteroid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/Network/ClientListener.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/Network/ClientListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/Entity.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Entity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/Network/IListener.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/Network/IListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/MoveableEntity.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/MoveableEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Player.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Player.java" />
+    <list default="true" id="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/Network/Request.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/Network/Request.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Turret.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Turret.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/Network/UdpClient.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/Network/UdpClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpaceHackathon2.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373579037005" ignored="false" />
+    <file path="/Dummy.txt" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373579062187" ignored="false" />
     <file path="/fragment.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373558787543" ignored="false" />
     <file path="/GameController.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373505547522" ignored="false" />
     <file path="/SpawnerCommand.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373531932725" ignored="false" />
@@ -26,7 +18,7 @@
     <file path="/WorldLoader.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373541487598" ignored="false" />
     <file path="/GameServer.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373554113134" ignored="false" />
     <file path="/ServerListener.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373544775719" ignored="false" />
-    <file path="/Request.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373579003552" ignored="false" />
+    <file path="/Request.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373579837522" ignored="false" />
     <file path="/GameClient.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373568346470" ignored="false" />
     <file path="/ClientListener.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373578834484" ignored="false" />
     <file path="/GameConnection.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373554046459" ignored="false" />
@@ -136,10 +128,19 @@
       <file leaf-file-name="Request.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="27" selection-start="2883" selection-end="2883" vertical-scroll-proportion="0.60535717">
+            <state line="122" column="17" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.27142859">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorldMetaData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/Loader/WorldMetaData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -278,6 +279,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="World" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.twopeople.race" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="World" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Loader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.twopeople.race" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Network" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
@@ -297,28 +338,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpaceHackathon2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpaceHackathon2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.twopeople.race" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Unit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -935,7 +954,11 @@
       <created>1373570706019</created>
       <updated>1373570706019</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="World saving&#10;">
+      <created>1373579072784</created>
+      <updated>1373579072784</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1006,7 +1029,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Network connection part 2&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="World saving&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1033,6 +1056,7 @@
     <MESSAGE value="add meta" />
     <MESSAGE value="Network connection part 1&#10;" />
     <MESSAGE value="Network connection part 2&#10;" />
+    <MESSAGE value="World saving&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1042,11 +1066,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/state/StateBasedGame.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="25" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.35021096" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="8" selection-start="413" selection-end="413" vertical-scroll-proportion="0.24056605">
@@ -1147,9 +1166,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/Loader/WorldMetaData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="27" selection-start="2883" selection-end="2883" vertical-scroll-proportion="0.60535717">
+        <state line="122" column="17" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.27142859">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
