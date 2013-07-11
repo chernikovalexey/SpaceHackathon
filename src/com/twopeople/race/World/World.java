@@ -68,6 +68,8 @@ public class World {
 	}
 
 	public void update(GameContainer container, int delta) {
+		
+		System.out.println("wh "+playersPtr.get(0).x+" "+playersPtr.get(0).y);
 		updateEntitiesGrid(background, container, delta, true);
 		updateEntitiesGrid(entities, container, delta, false);
 		updateEntitiesList(borders, container, delta);
@@ -147,7 +149,6 @@ public class World {
 		g.drawString("borders: " + borders.size(), 10, 70);
 	}
 
-	@SuppressWarnings("unused")
 	private void renderVaultGrid(Graphics g, EntityGridVault vault) {
 		for (int x = 0; x < vault.cellsX; ++x) {
 			for (int y = 0; y < vault.cellsY; ++y) {

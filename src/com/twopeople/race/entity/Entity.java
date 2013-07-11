@@ -58,6 +58,10 @@ public class Entity {
 		this.angle = angle;
 	}
 
+	public float getAngle() {
+		return this.angle;
+	}
+
 	public void setCell(int cx, int cy) {
 		this.cellX = cx;
 		this.cellY = cy;
@@ -77,6 +81,14 @@ public class Entity {
 
 	public boolean shouldRemove() {
 		return remove;
+	}
+
+	public boolean rotatable() {
+		return false;
+	}
+
+	public float[] getRotationCenter() {
+		return new float[] { w / 2, h / 2 };
 	}
 
 	public void rotate(float angle) {

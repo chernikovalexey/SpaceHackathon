@@ -55,7 +55,7 @@ public class Camera {
 		this.targetX = x;
 		if (mapWidth != -1) {
 			if (targetX < 0) targetX = 0;
-			if (targetX + width > mapWidth) targetX = mapWidth - width;
+			//if (targetX + width > mapWidth) targetX = mapWidth - width;
 		}
 	}
 

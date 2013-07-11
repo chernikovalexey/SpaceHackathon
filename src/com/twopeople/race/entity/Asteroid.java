@@ -62,7 +62,7 @@ public class Asteroid extends MoveableEntity {
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
 
-		g.setColor(new Color(255, 255, 255, 150));
-		g.fill(new Circle(camera.getScreenX(getBounds().getCenterX()), camera.getScreenY(getBounds().getCenterY()), w/2));
+//		g.setColor(new Color(255, 255, 255, 150));
+//		g.fill(new Circle(camera.getScreenX(getBounds().getCenterX()), camera.getScreenY(getBounds().getCenterY()), w/2));
 	}
 }

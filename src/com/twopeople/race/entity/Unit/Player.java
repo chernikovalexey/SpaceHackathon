@@ -1,8 +1,5 @@
 package com.twopeople.race.entity.Unit;
 
-import java.awt.geom.AffineTransform;
-import java.awt.geom.PathIterator;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -17,11 +14,11 @@ import org.newdawn.slick.geom.Triangulator;
 import com.twopeople.race.Art;
 import com.twopeople.race.World.Camera;
 import com.twopeople.race.World.World;
+import com.twopeople.race.entity.AnimatedEntity;
 import com.twopeople.race.entity.CollisionType;
 import com.twopeople.race.entity.EntityGridVault;
-import com.twopeople.race.entity.MoveableEntity;
 
-public class Player extends MoveableEntity {
+public class Player extends AnimatedEntity {
 	private String name;
 	private Turret turret;
 
@@ -32,7 +29,7 @@ public class Player extends MoveableEntity {
 		setFriction(.032f);
 		setMaxSpeed(0.15f);
 		setCameraOwner(true);
-
+		setAnimation(Art.ships, 0, 0, 0, 4);
 		turret = new Turret(world, this);
 	}
 
@@ -51,9 +48,9 @@ public class Player extends MoveableEntity {
 
 	@Override
 	public Shape[] getBBSkeleton() {
-		Rectangle r = new Rectangle((int) x, (int) y + 5 + 15, w, h - 10 - 15);
-		Transform transformation = Transform.createRotateTransform((float) Math.toRadians(angle));
-		r.transform(transformation);
+		Rectangle r = new Rectangle(x, y + 5 + 15, w, h - 10 - 15);
+		Transform transformation = Transform.createRotateTransform((float) Math.toRadians(angle), r.getCenterX(),
+				r.getCenterY());
 		Triangulator tr = r.getTriangles();
 		Polygon[] polygons = new Polygon[tr.getTriangleCount() + 1];
 		float[] v1, v2, v3;
@@ -62,11 +59,22 @@ public class Player extends MoveableEntity {
 			v2 = tr.getTrianglePoint(i, 1);
 			v3 = tr.getTrianglePoint(i, 2);
 			polygons[i] = new Polygon(new float[] { v1[0], v1[1], v2[0], v2[1], v3[0], v3[1] });
+			polygons[i] = (Polygon) polygons[i].transform(transformation);
 		}
 		Polygon nosePoly = new Polygon(new float[] { x, y + 5 + 15, x + w, y + 5 + 15, x + w / 2, y + 5 });
 		nosePoly = (Polygon) nosePoly.transform(transformation);
 		polygons[polygons.length - 1] = nosePoly;
 		return polygons;
+	}
+
+	@Override
+	public boolean rotatable() {
+		return true;
+	}
+
+	@Override
+	public float[] getRotationCenter() {
+		return new float[] { w / 2, h / 2 + 5 };
 	}
 
 	@Override
@@ -99,16 +107,17 @@ public class Player extends MoveableEntity {
 
 	@Override
 	public void render(GameContainer container, Graphics g, Camera camera) {
+		// super.render(container, g, camera);
 		Image image = Art.ships.getSprite(0, 0);
-		image.setCenterOfRotation(w / 2, h / 2);
+		image.setCenterOfRotation(w / 2, h / 2 + 5);
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
 
-		// turret.render(container, g, camera);
+		turret.render(container, g, camera);
 
-		g.setColor(new Color(255, 255, 255, 125));
-		for (Shape shape : getBBSkeleton()) {
-			g.fill(shape);
-		}
+		// g.setColor(new Color(255, 255, 255, 125));
+		// for (Shape shape : getBBSkeleton()) {
+		// g.fill(shape);
+		// }
 	}
 }
