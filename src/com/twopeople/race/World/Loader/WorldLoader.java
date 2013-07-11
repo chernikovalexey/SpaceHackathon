@@ -32,6 +32,7 @@ public class WorldLoader {
         _world = world;
         _parseImage(dirName + "\\data.png");
         _sortBorders();
+        world.setMetaData(metaData);
     }
 
     public static void load(String name, World world) {
