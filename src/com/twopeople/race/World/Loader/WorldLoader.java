@@ -52,7 +52,7 @@ public class WorldLoader {
         }
     }
 
-    public static WorldSize preload(String name, Integer width, Integer height) {
+    public static WorldSize preload(String name) {
         _preloadedPath = name;
         try {
             _preloadedImage = new Image(_preloadedPath);
