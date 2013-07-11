@@ -1,10 +1,15 @@
 package com.twopeople.race.entity.Unit;
 
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.PathIterator;
+
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Transform;
 
@@ -20,16 +25,27 @@ public class Player extends MoveableEntity {
 		super(world, x, y, 64, 64);
 
 		setCollisionType(CollisionType.All);
-		setFriction(.022f);
-		setMaxSpeed(0.09f);
+		setFriction(.032f);
+		setMaxSpeed(0.65f);
 		setCameraOwner(true);
 	}
 
 	@Override
 	public Shape getBounds() {
-		Rectangle rect  = new Rectangle(x, y, w, h);
-		rect.transform(Transform.createRotateTransform((float)Math.toRadians(angle)));
-		return rect;
+		Rectangle r = new Rectangle((int) x, (int) y, w, h);
+		AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(angle), r.getCenterX(), r.getCenterY());
+		Polygon p = new Polygon();
+
+		PathIterator i = r.getPathIterator(at);
+		while (!i.isDone()) {
+			double[] xy = new double[2];
+			i.currentSegment(xy);
+			p.addPoint((int) xy[0], (int) xy[1]);
+			// System.out.println(Arrays.toString(xy));
+
+			i.next();
+		}
+		return p;
 	}
 
 	@Override
@@ -45,10 +61,10 @@ public class Player extends MoveableEntity {
 			rotate(getRealSpeed() / (delta * k));
 		}
 		if (input.isKeyDown(Input.KEY_W)) {
-			speed += 0.425f;
+			speed += 0.275f;
 		}
 		if (input.isKeyDown(Input.KEY_S)) {
-			speed -= 0.625f;
+			speed -= 0.325f;
 		}
 
 		direction.set((float) Math.cos(Math.toRadians(angle + 90)), (float) Math.sin(Math.toRadians(angle + 90)));
@@ -62,5 +78,7 @@ public class Player extends MoveableEntity {
 		image.setCenterOfRotation(w / 2, h / 2);
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+
+		g.setColor(new Color(255, 255, 255, 125));
 	}
 }
