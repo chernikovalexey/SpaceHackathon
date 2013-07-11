@@ -62,9 +62,18 @@ public class Turret extends Entity {
 		Image image = Art.turret.getSprite(0, 0);
 		image.setCenterOfRotation(w / 2, h / 2 + 3.5f);
 		image.rotate(angle);
-		Shape bb = owner.getBounds();
-		System.out.println(bb.getCenterX() + ", " + bb.getCenterY());
-		image.draw(camera.getScreenX(x) + (bb.getCenterX() - bb.getX()) - w / 2,
-				camera.getScreenY(y) + (bb.getCenterY() - bb.getY()) - h / 2 - 3.5f);
+
+		Shape[] skeleton = owner.getBBSkeleton();
+		float cx = 0, cy = 0;
+		for (int i = 0; i < skeleton.length; ++i) {
+			cx += skeleton[i].getCenterX() - owner.x;
+			cy += skeleton[i].getCenterY() - owner.y;
+		}
+
+		cx /= skeleton.length;
+		cy /= skeleton.length;
+
+		System.out.println(cx + ", " + cy);
+		image.draw(camera.getScreenX(x) + cx - w / 2, camera.getScreenY(y) + cy - h / 2 - 3.5f);
 	}
 }
