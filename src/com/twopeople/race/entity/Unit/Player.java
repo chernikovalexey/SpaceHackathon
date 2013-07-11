@@ -64,7 +64,7 @@ public class Player extends MoveableEntity {
 			polygons[i] = new Polygon(new float[] { v1[0], v1[1], v2[0], v2[1], v3[0], v3[1] });
 		}
 		Polygon nosePoly = new Polygon(new float[] { x, y + 5 + 15, x + w, y + 5 + 15, x + w / 2, y + 5 });
-		nosePoly.transform(transformation);
+		nosePoly = (Polygon) nosePoly.transform(transformation);
 		polygons[polygons.length - 1] = nosePoly;
 		return polygons;
 	}
