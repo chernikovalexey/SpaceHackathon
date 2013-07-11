@@ -1,5 +1,6 @@
 package com.twopeople.race.entity;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,7 +16,7 @@ public class Asteroid extends MoveableEntity {
 	private final int SKIP_TICKS = 6;
 
 	public Asteroid(World world, float x, float y) {
-		super(world, x, y, 128, 128);
+		super(world, x, y, 84, 84);
 
 		setCollisionType(CollisionType.All);
 		setConstantSpeed(true);
@@ -28,7 +29,7 @@ public class Asteroid extends MoveableEntity {
 
 	@Override
 	public Shape getBounds() {
-		return new Circle(x + w / 2, y + h / 2, w-24);
+		return new Circle(x + w / 2, y + h / 2, w);
 	}
 
 	@Override
@@ -47,5 +48,8 @@ public class Asteroid extends MoveableEntity {
 		image.setCenterOfRotation(w / 2, h / 2);
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+
+		g.setColor(new Color(255, 255, 255, 150));
+		g.fill(new Circle(camera.getScreenX(getBounds().getCenterX()), camera.getScreenY(getBounds().getCenterY()), w));
 	}
 }

@@ -6,6 +6,7 @@ public class Camera {
 	private int width, height;
 	private float targetX, targetY;
 	private float x, y;
+	private int mapWidth = -1, mapHeight = -1;
 	private float shakeAnimationState, shakeAmplitude;
 
 	public Camera(int width, int height) {
@@ -19,6 +20,11 @@ public class Camera {
 
 		shakeAnimationState += delta * .001f;
 		shakeAmplitude += -shakeAmplitude * delta * .0099f * 2.5f;
+	}
+
+	public void setWorldSize(int w, int h) {
+		this.mapWidth = w;
+		this.mapHeight = h;
 	}
 
 	public float getX() {
@@ -47,12 +53,18 @@ public class Camera {
 
 	public void setTargetX(float x) {
 		this.targetX = x;
-		if (targetX < 0) targetX = 0;
+		if (mapWidth != -1) {
+			if (targetX < 0) targetX = 0;
+			if (targetX + width > mapWidth) targetX = mapWidth - width;
+		}
 	}
 
 	public void setTargetY(float y) {
 		this.targetY = y;
-		if (targetY < 0) targetY = 0;
+		if (mapHeight != -1) {
+			if (targetY < 0) targetY = 0;
+			if (targetY + height > mapHeight) targetY = mapHeight - height;
+		}
 	}
 
 	public void centerOn(Entity entity) {

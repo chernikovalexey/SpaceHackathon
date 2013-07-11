@@ -74,6 +74,10 @@ public class MoveableEntity extends Entity {
 		if (isCameraOwner) {
 			world.getCamera().centerOn(this);
 		}
+		
+		if (world.isOutsideWorld(this)) {
+			ranOutsideWorld();
+		}
 	}
 
 	public boolean move(float dx, float dz) {

@@ -1,6 +1,5 @@
 package com.twopeople.race.entity.Unit;
 
-import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
 
@@ -10,8 +9,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Transform;
+import org.newdawn.slick.geom.Triangulator;
 
 import com.twopeople.race.Art;
 import com.twopeople.race.World.Camera;
@@ -31,21 +32,24 @@ public class Player extends MoveableEntity {
 	}
 
 	@Override
-	public Shape getBounds() {
+	public boolean isComplexFigure() {
+		return true;
+	}
+
+	@Override
+	public Shape[] getBBSkeleton() {
 		Rectangle r = new Rectangle((int) x, (int) y, w, h);
-		AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(angle), r.getCenterX(), r.getCenterY());
-		Polygon p = new Polygon();
-
-		PathIterator i = r.getPathIterator(at);
-		while (!i.isDone()) {
-			double[] xy = new double[2];
-			i.currentSegment(xy);
-			p.addPoint((int) xy[0], (int) xy[1]);
-			// System.out.println(Arrays.toString(xy));
-
-			i.next();
+		r = Transform.createRotateTransform((float)Math.toRadians(angle));
+		Triangulator tr = r.getTriangles();
+		Polygon[] polygons = new Polygon[tr.getTriangleCount()];
+		float[] v1, v2, v3;
+		for (int i = 0; i < tr.getTriangleCount(); ++i) {
+			v1 = tr.getTrianglePoint(i, 0);
+			v2 = tr.getTrianglePoint(i, 1);
+			v3 = tr.getTrianglePoint(i, 2);
+			polygons[i] = new Polygon(new float[] { v1[0], v1[1], v2[0], v2[1], v3[0], v3[1] });
 		}
-		return p;
+		return polygons;
 	}
 
 	@Override
@@ -80,5 +84,8 @@ public class Player extends MoveableEntity {
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
 
 		g.setColor(new Color(255, 255, 255, 125));
+		for (Shape shape : getBBSkeleton()) {
+			g.fill(shape);
+		}
 	}
 }

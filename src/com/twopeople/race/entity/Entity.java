@@ -19,6 +19,7 @@ public class Entity {
 	public float angle = 0f;
 	private int health;
 	public CollisionType collisionType = CollisionType.None;
+	private boolean remove = false;
 
 	protected Vector2f direction = new Vector2f(0, 0);
 
@@ -49,7 +50,7 @@ public class Entity {
 	}
 
 	public boolean shouldRemove() {
-		return false;
+		return remove;
 	}
 
 	public void rotate(float angle) {
@@ -77,6 +78,10 @@ public class Entity {
 			}
 		}
 		return false;
+	}
+
+	public void ranOutsideWorld() {
+		remove = true;
 	}
 
 	public float getDistanceTo(Entity entity) {
