@@ -13,10 +13,10 @@ import java.io.IOException;
  * Time: 10:56
  * To change this template use File | Settings | File Templates.
  */
-public class Client {
+public class GameClient {
 
     private Kryo kryo;
-    public Client(EndPoint ipep)
+    public GameClient(EndPoint ipep)
     {
         kryo = ipep.getKryo();
 
