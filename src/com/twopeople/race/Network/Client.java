@@ -1,6 +1,7 @@
 package com.twopeople.race.Network;
 
 import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.EndPoint;
 import com.esotericsoftware.kryonet.Server;
 
 import java.io.IOException;
@@ -13,26 +14,17 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class Client {
-    public Client()
+
+    private Kryo kryo;
+    public Client(EndPoint ipep)
     {
-        Server s=new Server();
-        try {
-            s.bind(20000, 20001);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
-
-        Kryo k = s.getKryo();
-        k.register(String.class);
-        GameListener listener = new GameListener();
-        s.addListener(listener);
+        kryo = ipep.getKryo();
 
     }
 
 
     public static void main(String[] args)
     {
-        Client client=new Client();
+        //Client client=new Client();
     }
 }
