@@ -95,10 +95,30 @@ public class WorldLoader {
 
         BorderBlock a, b = null;
         float minDist, d;
-        BorderBlock minJ = null;
+        BorderBlock save = null;
 
-
-        for (int i = 0; i < blocks.size(); i++) {
+        a = blocks.get(0);
+        blocks.remove(a);
+        while (blocks.size() > 0)
+        {
+            save=null;
+            minDist=Float.MAX_VALUE;
+            for(int i=0;i<blocks.size();i++)
+            {
+                b = blocks.get(i);
+                d = a.getDistanceTo(b);
+                if(d<minDist)
+                {
+                    save=b;
+                    minDist=d;
+                }
+            }
+            result.add(a);
+            blocks.remove(save);
+            a=save;
+        }
+        result.add(a);
+        /*for (int i = 0; i < blocks.size(); i++) {
             a = blocks.get(i);
             result.add(a);
             minDist = Float.MAX_VALUE;
@@ -115,7 +135,7 @@ public class WorldLoader {
             result.add(b);
             result.remove(a);
             result.remove(minJ);
-        }
+        }     */
 
         return result;
     }

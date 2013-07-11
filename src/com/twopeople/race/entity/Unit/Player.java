@@ -29,7 +29,7 @@ public class Player extends MoveableEntity {
 
 		setCollisionType(CollisionType.All);
 		setFriction(.032f);
-		setMaxSpeed(0.15f);
+		setMaxSpeed(0.35f);
 		setCameraOwner(true);
 
 		turret = new Turret(world, this);
