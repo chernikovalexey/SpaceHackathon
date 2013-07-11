@@ -23,8 +23,6 @@ public class World {
 	private Camera camera;
 	private Random random = new Random();
 
-
-    private int width, height;
 	private ArrayList<StartPoint> startPoints = new ArrayList<StartPoint>();
 	private EntityGridVault background;
 	private EntityGridVault entities;
@@ -32,6 +30,7 @@ public class World {
 	private EntityGridVault borders;
 
 	public static final int TILE_SIZE = 16;
+	private int width, height;
 
 	private WorldMetaData metaData;
 
@@ -43,6 +42,7 @@ public class World {
 
 		WorldLoader.load("res/maps/map1", this);
 
+		camera.setWorldSize(width, height);
 		entities.add(new Player(this, 250, 250));
 		entities.add(new Asteroid(this, 330, 280));
 		for (int x = 0; x < 256 * 6; x += 10) {
@@ -54,10 +54,9 @@ public class World {
 		}
 	}
 
-    public void addStartPoint(StartPoint point)
-    {
-         startPoints.add(point);
-    }
+	public void addStartPoint(StartPoint point) {
+		startPoints.add(point);
+	}
 
 	public void setMetaData(WorldMetaData data) {
 		this.metaData = data;
@@ -100,6 +99,10 @@ public class World {
 		}
 	}
 
+	public boolean isOutsideWorld(Entity entity) {
+		return entity.x <= 0 || entity.y <= 0 || entity.x >= width || entity.y >= height;
+	}
+
 	public void addEntity(Entity e) {
 		entities.add(e);
 	}
@@ -129,19 +132,19 @@ public class World {
 		return entities.getCollidables(entity);
 	}
 
-    public int getWidth() {
-        return width;
-    }
+	public int getWidth() {
+		return width;
+	}
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
+	public void setWidth(int width) {
+		this.width = width;
+	}
 
-    public int getHeight() {
-        return height;
-    }
+	public int getHeight() {
+		return height;
+	}
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
+	public void setHeight(int height) {
+		this.height = height;
+	}
 }
