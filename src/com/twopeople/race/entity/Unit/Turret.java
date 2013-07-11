@@ -17,8 +17,8 @@ public class Turret extends Entity {
 	}
 
 	public void updateDirection(float ms, float my) {
-		System.out.println(ms + ", " + my);
-		rotate((float) Math.atan2(my, ms));
+		angle = (float) Math.toDegrees(Math.atan2(my, ms));
+		System.out.println(angle);
 	}
 
 	public void render(GameContainer container, Graphics g, Camera camera) {

@@ -26,7 +26,7 @@ public class World {
 	private EntityGridVault background;
 	private EntityGridVault entities;
 	private ArrayList<Player> playersPtr = new ArrayList<Player>();
-	private EntityGridVault borders;
+	private ArrayList<Entity> borders = new ArrayList<Entity>();
 
 	public static final int TILE_SIZE = 16;
 	private int width = 4540, height = 1980;
@@ -42,7 +42,6 @@ public class World {
 
 		this.background = new EntityGridVault(256, 256, width, height);
 		this.entities = new EntityGridVault(128, 128, width, height);
-		this.borders = new EntityGridVault(256, 256, width, height);
 
 		WorldLoader.load("res/maps/map1", this);
 
@@ -69,12 +68,12 @@ public class World {
 	}
 
 	public void update(GameContainer container, int delta) {
-		updateEntitiesList(background, container, delta, true);
-		updateEntitiesList(entities, container, delta, false);
-		updateEntitiesList(borders, container, delta, true);
+		updateEntitiesGrid(background, container, delta, true);
+		updateEntitiesGrid(entities, container, delta, false);
+		updateEntitiesList(borders, container, delta);
 	}
 
-	private void updateEntitiesList(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
+	private void updateEntitiesGrid(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
 		Iterator<Entity> iterator = vis ? vault.getVisible(camera).iterator() : vault.getAll().iterator();
 		while (iterator.hasNext()) {
 			Entity e = iterator.next();
@@ -88,16 +87,22 @@ public class World {
 		}
 	}
 
+	private void updateEntitiesList(ArrayList<Entity> list, GameContainer container, int delta) {
+		for (int i = 0; i < list.size(); ++i) {
+			list.get(i).update(container, delta, null);
+		}
+	}
+
 	public void render(GameContainer container, Graphics g) {
-		renderEntitiesList(background, container, g);
-		renderEntitiesList(entities, container, g);
+		renderEntitiesGrid(background, container, g);
+		renderEntitiesGrid(entities, container, g);
 		renderEntitiesList(borders, container, g);
 
 		renderVaultGrid(g, entities);
 
 		Entity[] left = new Entity[borders.size()];
 		int li = 0;
-		for (Entity block : borders.getAll()) {
+		for (Entity block : borders) {
 			BorderBlock b = (BorderBlock) block;
 			if (b.position == BorderBlock.BlockPosition.Left) {
 				left[li++] = b;
@@ -106,7 +111,7 @@ public class World {
 
 		Entity[] right = new Entity[borders.size()];
 		int ri = 0;
-		for (Entity block : borders.getAll()) {
+		for (Entity block : borders) {
 			BorderBlock b = (BorderBlock) block;
 			if (b.position == BorderBlock.BlockPosition.Right) {
 				right[ri++] = b;
@@ -157,11 +162,20 @@ public class World {
 		}
 	}
 
-	private void renderEntitiesList(EntityGridVault vault, GameContainer container, Graphics g) {
+	private void renderEntitiesGrid(EntityGridVault vault, GameContainer container, Graphics g) {
 		Iterator<Entity> iterator = vault.getVisible(camera).iterator();
 		while (iterator.hasNext()) {
 			Entity e = iterator.next();
 			e.render(container, g, camera);
+		}
+	}
+
+	private void renderEntitiesList(ArrayList<Entity> list, GameContainer container, Graphics g) {
+		for (int i = 0; i < list.size(); ++i) {
+			Entity e = list.get(i);
+			if (camera.isVisible(e)) {
+				e.render(container, g, camera);
+			}
 		}
 	}
 
@@ -190,7 +204,7 @@ public class World {
 		return random;
 	}
 
-	public EntityGridVault getBorders() {
+	public ArrayList<Entity> getBorders() {
 		return borders;
 	}
 

@@ -64,9 +64,7 @@ public class WorldLoader {
     }
 
     private void _sortBorders() {
-        EntityGridVault v = _world.getBorders();
-
-        List<Entity> borders = v.getAll();
+        List<Entity> borders = _world.getBorders();
 
         List<BorderBlock> left = new ArrayList<BorderBlock>();
         List<BorderBlock> right = new ArrayList<BorderBlock>();
