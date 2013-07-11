@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.twopeople.race.Art;
@@ -21,7 +22,7 @@ public class Turret extends Entity {
 	}
 
 	public Turret(World world, Entity owner) {
-		super(world, owner.x, owner.y, 16, 16);
+		super(world, owner.x, owner.y, 32, 32);
 		setOwner(owner);
 		bindToParent(owner);
 	}
@@ -38,8 +39,8 @@ public class Turret extends Entity {
 		if (current - lastShoot > CHILL_TIME) {
 			lastShoot = current;
 
-			Vector2f dir = new Vector2f(angle);
-			world.addProjectile(new Projectile(world, x, y, direction));
+			Vector2f dir = new Vector2f(angle + 90);
+			world.addProjectile(new Projectile(world, x, y, dir));
 		}
 	}
 
@@ -59,8 +60,11 @@ public class Turret extends Entity {
 	@Override
 	public void render(GameContainer container, Graphics g, Camera camera) {
 		Image image = Art.turret.getSprite(0, 0);
-		image.setCenterOfRotation(w / 2, h / 2);
+		image.setCenterOfRotation(w / 2, h / 2 + 3.5f);
 		image.rotate(angle);
-		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+		Shape bb = owner.getBounds();
+		System.out.println(bb.getCenterX() + ", " + bb.getCenterY());
+		image.draw(camera.getScreenX(x) + (bb.getCenterX() - bb.getX()) - w / 2,
+				camera.getScreenY(y) + (bb.getCenterY() - bb.getY()) - h / 2 - 3.5f);
 	}
 }

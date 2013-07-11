@@ -65,6 +65,7 @@ public class Player extends AnimatedEntity {
 		Triangulator tr = r.getTriangles();
 		Polygon[] polygons = new Polygon[tr.getTriangleCount() + 1];
 		float[] v1, v2, v3;
+		System.out.println("polygons:"+tr.getTriangleCount());
 		for (int i = 0; i < tr.getTriangleCount(); ++i) {
 			v1 = tr.getTrianglePoint(i, 0);
 			v2 = tr.getTrianglePoint(i, 1);

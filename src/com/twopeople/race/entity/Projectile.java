@@ -12,10 +12,10 @@ import com.twopeople.race.World.World;
 
 public class Projectile extends MoveableEntity {
 	public Projectile(World world, float x, float y, Vector2f direction) {
-		super(world, x, y, 4, 4);
+		super(world, x, y, 6, 6);
 		this.direction = direction;
 		setFriction(0.0025f);
-		setMaxSpeed(.5f);
+		setMaxSpeed(.025f);
 		speed = getMaxSpeed();
 	}
 
