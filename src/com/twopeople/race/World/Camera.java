@@ -67,6 +67,14 @@ public class Camera {
 		}
 	}
 
+	public float getAbsoluteX(float x) {
+		return this.x + x;
+	}
+
+	public float getAbsoluteY(float y) {
+		return this.y + y;
+	}
+	
 	public void centerOn(Entity entity) {
 		setTargetX(entity.x - entity.w / 2 - getScreenWidth() * .25f);
 		setTargetY(entity.y - entity.h / 2 - getScreenHeight() * .3f);
