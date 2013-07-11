@@ -17,10 +17,12 @@ import java.lang.reflect.Field;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Request implements KryoSerializable {
+public class Request {
 
+    public static final int SIZE = 20000;
     public String nickName;
     public float x, y, angle;
+
 
     public static Request connectionRequest(Player p) {
         Request r=new Request();
@@ -32,6 +34,11 @@ public class Request implements KryoSerializable {
         return r;
     }
 
+    private static int _number=0;
+    public static int Number() {
+         _number++;
+        return _number;
+    }
 
 
     public class Type {
@@ -40,8 +47,9 @@ public class Request implements KryoSerializable {
 
     public int rType;
 
-    @Override
-    public void write(Kryo kryo, Output output) {
+    public byte[] write() {
+
+        Output output=new Output(SIZE);
         output.writeInt(rType);
         switch (rType) {
             case Type.Connection:
@@ -51,10 +59,12 @@ public class Request implements KryoSerializable {
                 output.writeString(nickName);
                 break;
         }
+
+        return output.getBuffer();
     }
 
-    @Override
-    public void read(Kryo kryo, Input input) {
+    public void read(byte[] data) {
+        Input input = new Input(data);
         rType = input.readInt();
         switch (rType) {
             case Type.Connection:
@@ -66,7 +76,6 @@ public class Request implements KryoSerializable {
         }
     }
 
-    @Override
     public String toString()
     {
         String result="";
@@ -79,7 +88,9 @@ public class Request implements KryoSerializable {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
             catch (NullPointerException e)
-            {}
+            {
+
+            }
         }
 
         return result;

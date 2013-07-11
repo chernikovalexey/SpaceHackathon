@@ -5,9 +5,16 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.EndPoint;
 import com.esotericsoftware.kryonet.Server;
 import com.sun.jmx.remote.internal.ClientListenerInfo;
+import com.twopeople.race.GameController;
+import com.twopeople.race.World.Camera;
 import com.twopeople.race.World.World;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.SlickException;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,46 +23,47 @@ import java.io.IOException;
  * Time: 10:56
  * To change this template use File | Settings | File Templates.
  */
-public class GameClient extends GameConnection {
+public class GameClient extends GameConnection{
 
-    private World world;
-    private GameClient(String ip, World world)
-    {
-        this.world=world;
-        Client client=new Client();
-        try {
-            client.connect(5000, ip, 4096, 8192);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        client.addListener(new ClientListener(this));
+    private Thread thread;
+    private UdpClient client;
+
+    private final int TCP_PORT = 27015;
+    private final int UDP_PORT = 27016;
+    private GameClient(String ip, World world) throws IOException {
+
+        _init(world);
+        _connect(ip);
     }
 
-    public GameClient(World world) {
-        this.world=world;
-        Server s=new Server();
-        s.start();
-        try {
-            s.bind(4096, 8182);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
-        s.addListener(new ClientListener(this));
+    private void _connect(String ip) throws IOException {
+        client.send(Request.connectionRequest(_world.getControllablePlayer()), InetAddress.getByName(ip));
     }
 
-    public static GameClient connect(String ip, World world)
+    private void _init(World world) throws SocketException
     {
+        this._world=world;
+        try {
+            client=new UdpClient(27015);
+        } catch (SocketException e) {
+            client=new UdpClient(27016);
+        }
+    }
+
+    private GameClient(World world) throws SocketException {
+        _init(world);
+    }
+
+    public static GameClient connect(String ip, World world) throws IOException {
         return new GameClient(ip,world);
     }
 
-    public static GameClient create(World world)
-    {
+    public static GameClient create(World world) throws SocketException {
         return new GameClient(world);
     }
 
-    public static void main(String[] args)
-    {
-        //Client client=new Client();
+    public static void main(String[] args) throws SlickException {
+        AppGameContainer game = new AppGameContainer(new GameController());
+
     }
 }

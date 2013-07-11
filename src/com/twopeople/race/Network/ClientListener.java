@@ -4,6 +4,9 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.twopeople.race.entity.Unit.Player;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +15,7 @@ import com.twopeople.race.entity.Unit.Player;
  * Time: 15:26
  * To change this template use File | Settings | File Templates.
  */
-public class ClientListener extends Listener {
+public class ClientListener implements IListener {
 
     private GameConnection _connection;
     public ClientListener(GameConnection c)
@@ -20,16 +23,10 @@ public class ClientListener extends Listener {
         _connection=c;
     }
 
-    @Override public void connected(Connection connection)
-    {
-        System.out.println("Player connected to server");
-        connection.sendUDP(Request.connectionRequest(_connection.getWorld().getControllablePlayer()));
-    }
-
-    @Override
-    public void received(Connection connection, Object request)
+    public void received(InetAddress address,Request request)
     {
         Request r=(Request)request;
+        System.out.println("ip="+address+" Request #"+Request.Number()+" "+request.toString());
         switch (r.rType)
         {
             case Request.Type.Connection:
@@ -44,5 +41,11 @@ public class ClientListener extends Listener {
         p.setAngle(request.angle);
         p.setName(request.nickName);
         _connection.getWorld().playerConnects(p);
+    }
+
+
+    public void idle(Connection connection)
+    {
+        System.out.println("idle");
     }
 }
