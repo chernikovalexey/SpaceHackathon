@@ -60,7 +60,7 @@ public class WorldLoader {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-        return new WorldSize(_preloadedImage.getWidth(), _preloadedImage.getHeight());
+        return new WorldSize(_preloadedImage.getWidth() * World.TILE_SIZE, _preloadedImage.getHeight() * World.TILE_SIZE);
     }
 
     private void _sortBorders() {
