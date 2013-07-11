@@ -17,7 +17,7 @@ public class AsteroidCommand implements IWorldColorCommand {
     @Override
     public void execute(World world, int px, int py, Color color) {
         Asteroid asteroid = new Asteroid(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
-        //todo: set random vector of movement to asteroid
+        //todo: set random vector of movement to ASTEROID
         world.addEntity(asteroid);
     }
 }
