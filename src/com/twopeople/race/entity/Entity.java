@@ -25,11 +25,15 @@ public class Entity {
 
 	public Entity(World world, float x, float y, int w, int h) {
 		this.world = world;
-		this.x = x;
-		this.y = y;
+		setCoordinates(x, y);
 		this.w = w;
 		this.h = h;
 		this.id = entitySerial++;
+	}
+
+	public void setCoordinates(float x, float y) {
+		this.x = x;
+		this.y = y;
 	}
 
 	public void setCell(int cx, int cy) {

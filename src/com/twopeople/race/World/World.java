@@ -45,8 +45,10 @@ public class World {
 		WorldLoader.load("res/maps/map1", this);
 
 		camera.setWorldSize(width, height);
-		entities.add(new Player(this, 250, 250));
-		entities.add(new Asteroid(this, 360, 290));
+		Player player = new Player(this, 0, 0);
+		player.setCoordinates(startPoints.get(0).x, startPoints.get(1).y);
+		addPlayer(player);
+		addEntity(new Asteroid(this, 360, 290));
 		for (int x = 0; x < 256 * 6; x += 10) {
 			for (int y = 0; y < 256 * 6; y += 16) {
 				if (random.nextInt(128) % 2 == 0) {
