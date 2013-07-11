@@ -22,6 +22,8 @@ import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.MoveableEntity;
 
 public class Player extends MoveableEntity {
+	private Turret turret;
+
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
 
@@ -29,6 +31,8 @@ public class Player extends MoveableEntity {
 		setFriction(.032f);
 		setMaxSpeed(0.15f);
 		setCameraOwner(true);
+
+		turret = new Turret(world, this);
 	}
 
 	@Override
@@ -74,6 +78,9 @@ public class Player extends MoveableEntity {
 		direction.set((float) Math.cos(Math.toRadians(angle + 90)), (float) Math.sin(Math.toRadians(angle + 90)));
 
 		super.update(container, delta, vault);
+		
+		turret.update(container, delta, vault);
+		turret.updateDirection(input.getMouseX(), input.getMouseY());
 	}
 
 	@Override
@@ -82,6 +89,8 @@ public class Player extends MoveableEntity {
 		image.setCenterOfRotation(w / 2, h / 2);
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
+
+		turret.render(container, g, camera);
 
 		g.setColor(new Color(255, 255, 255, 125));
 		for (Shape shape : getBBSkeleton()) {

@@ -20,6 +20,8 @@ public class Entity {
 	private int health;
 	public CollisionType collisionType = CollisionType.None;
 	private boolean remove = false;
+	private Entity owner;
+	private Entity parent;
 
 	protected Vector2f direction = new Vector2f(0, 0);
 
@@ -34,6 +36,18 @@ public class Entity {
 	public void setCoordinates(float x, float y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	public void setOwner(Entity owner) {
+		this.owner = owner;
+	}
+
+	public Entity getOwner() {
+		return owner;
+	}
+
+	public void bindToParent(Entity e) {
+		this.parent = e;
 	}
 
 	public void setCell(int cx, int cy) {
@@ -93,6 +107,9 @@ public class Entity {
 	}
 
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
+		if (parent != null) {
+			setCoordinates(parent.x, parent.y);
+		}
 	}
 
 	public void render(GameContainer container, Graphics g, Camera camera) {

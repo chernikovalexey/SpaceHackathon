@@ -1,6 +1,5 @@
 package com.twopeople.race.World;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -8,7 +7,6 @@ import java.util.Random;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 
 import com.twopeople.race.World.Loader.WorldLoader;
 import com.twopeople.race.World.Loader.WorldLoader.WorldSize;
@@ -18,7 +16,6 @@ import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.StartPoint;
 import com.twopeople.race.entity.Interior.BorderBlock;
-import com.twopeople.race.entity.Interior.Star;
 import com.twopeople.race.entity.Unit.Player;
 
 public class World {
@@ -43,8 +40,6 @@ public class World {
 		setWidth(size.width);
 		setHeight(size.height);
 
-		System.out.println(width + ", " + height);
-
 		this.background = new EntityGridVault(256, 256, width, height);
 		this.entities = new EntityGridVault(128, 128, width, height);
 		this.borders = new EntityGridVault(256, 256, width, height);
@@ -53,7 +48,7 @@ public class World {
 
 		camera.setWorldSize(width, height);
 		Player player = new Player(this, 0, 0);
-		player.setCoordinates(startPoints.get(0).x, startPoints.get(1).y);
+		player.setCoordinates(startPoints.get(0).x, startPoints.get(0).y);
 		addPlayer(player);
 		addEntity(new Asteroid(this, 360, 290));
 		for (int x = 0; x < 256 * 6; x += 10) {
