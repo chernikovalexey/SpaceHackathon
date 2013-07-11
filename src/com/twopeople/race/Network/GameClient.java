@@ -1,6 +1,7 @@
 package com.twopeople.race.Network;
 
 import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.EndPoint;
 import com.esotericsoftware.kryonet.Server;
 
@@ -18,6 +19,7 @@ public class GameClient {
     private Kryo kryo;
     public GameClient(EndPoint ipep)
     {
+        Client client=new Client();
         kryo = ipep.getKryo();
 
     }

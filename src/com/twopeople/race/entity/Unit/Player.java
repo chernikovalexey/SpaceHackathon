@@ -29,7 +29,7 @@ public class Player extends MoveableEntity {
 
 		setCollisionType(CollisionType.All);
 		setFriction(.032f);
-		setMaxSpeed(0.35f);
+		setMaxSpeed(0.15f);
 		setCameraOwner(true);
 
 		turret = new Turret(world, this);
@@ -60,7 +60,7 @@ public class Player extends MoveableEntity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 0.01f;
+		float k = 0.1f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));
