@@ -31,6 +31,14 @@ public class WorldLoader {
 		_sortBorders();
 	}
 
+	public static void load(String name, World world) {
+		try {
+			new WorldLoader(name, world);
+		} catch (ClassNotFoundException | IOException | SlickException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void _sortBorders() {
 		EntityGridVault v = _world.getBorders();
 

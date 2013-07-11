@@ -31,7 +31,6 @@ public class World {
 
 	public static final int TILE_SIZE = 16;
 
-	private WorldLoader loader;
 	private WorldMetaData metaData;
 
 	public World(Camera camera) {
@@ -40,22 +39,14 @@ public class World {
 		this.entities = new EntityGridVault(64, 64, 12, 12);
 		this.borders = new EntityGridVault(256, 256, 6, 6);
 
-		try {
-			this.loader = new WorldLoader("res/maps/map1", this);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		WorldLoader.load("res/maps/map1", this);
 
 		entities.add(new Player(this, 250, 250));
 		entities.add(new Asteroid(this, 330, 280));
 		for (int x = 0; x < 256 * 6; x += 10) {
 			for (int y = 0; y < 256 * 6; y += 16) {
 				if (random.nextInt(128) % 2 == 0) {
-					//background.add(new Star(this, x, y));
+					// background.add(new Star(this, x, y));
 				}
 			}
 		}
