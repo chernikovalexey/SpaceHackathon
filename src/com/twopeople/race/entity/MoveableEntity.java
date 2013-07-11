@@ -8,13 +8,13 @@ import org.newdawn.slick.geom.Vector2f;
 import com.twopeople.race.World.World;
 
 public class MoveableEntity extends Entity {
-	private float friction;
+    public float friction;
 	public float speed, maxSpeed;
-	public Vector2f velocity = new Vector2f(0, 0);
-	private Vector2f acceleration = new Vector2f(0, 0);
+    public Vector2f velocity = new Vector2f(0, 0);
+    public Vector2f acceleration = new Vector2f(0, 0);
 
-	private boolean isCameraOwner = false;
-	private boolean isConstantSpeed = false;
+    public boolean isCameraOwner = false;
+    public boolean isConstantSpeed = false;
 
 	public MoveableEntity() {
 	}

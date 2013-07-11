@@ -19,8 +19,8 @@ import com.twopeople.race.entity.CollisionType;
 import com.twopeople.race.entity.EntityGridVault;
 
 public class Player extends AnimatedEntity {
-	private String name;
-	private Turret turret;
+	public String name;
+    public Turret turret;
 	private boolean controllable = false;
 
 	public Player() {

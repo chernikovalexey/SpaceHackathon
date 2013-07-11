@@ -2,6 +2,7 @@ package com.twopeople.race.Network;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Unit.Player;
 
 import java.net.Inet4Address;
@@ -26,7 +27,7 @@ public class ClientListener implements IListener {
     public void received(InetAddress address,Request request)
     {
         Request r=(Request)request;
-        System.out.println("ip="+address+" Request #"+Request.Number()+" "+request.toString());
+        System.out.println("ip=" + address + " Request #" + Request.Number() + " " + request.toString());
         switch (r.rType)
         {
             case Request.Type.Connection:
@@ -34,6 +35,11 @@ public class ClientListener implements IListener {
                 break;
         }
 
+    }
+
+    @Override
+    public World getWorld() {
+        return _connection.getWorld();
     }
 
     private void _connection(Request request) {

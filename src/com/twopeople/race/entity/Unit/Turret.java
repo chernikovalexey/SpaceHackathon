@@ -23,6 +23,7 @@ public class Turret extends Entity {
 		bindToParent(owner);
 	}
 
+
 	public void updateDirection(float ms, float my) {
 		Vector2f playerDir = (new Vector2f(ms - x, my - y)).normalise();
 		direction.x = playerDir.x;
