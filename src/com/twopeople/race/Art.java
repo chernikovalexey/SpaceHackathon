@@ -5,6 +5,7 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Art {
 	public static final SpriteSheet ships = loadSprite("res/images/ships.png", 64, 64);
+	public static final SpriteSheet asteroids = loadSprite("res/images/asteroids.png", 128, 128);
 
 	public static SpriteSheet loadSprite(String file, int w, int h) {
 		try {
