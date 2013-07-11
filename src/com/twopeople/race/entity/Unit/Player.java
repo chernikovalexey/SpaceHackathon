@@ -42,6 +42,10 @@ public class Player extends AnimatedEntity {
 		return name;
 	}
 
+	public boolean isControllable() {
+		return controllable;
+	}
+
 	public void setControllable(boolean ctrl) {
 		this.controllable = ctrl;
 	}
