@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import com.twopeople.race.World.Loader.WorldLoader;
+import com.twopeople.race.World.Loader.WorldLoader.WorldSize;
 import com.twopeople.race.World.Loader.WorldMetaData;
 import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
@@ -37,6 +38,10 @@ public class World {
 
 	public World(Camera camera) {
 		this.camera = camera;
+
+		WorldSize size = WorldLoader.preload("res/maps/map1");
+		setWidth(size.width);
+		setHeight(size.height);
 
 		this.background = new EntityGridVault(256, 256, width, height);
 		this.entities = new EntityGridVault(128, 128, width, height);
