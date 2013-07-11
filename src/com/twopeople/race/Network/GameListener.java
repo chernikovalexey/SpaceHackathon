@@ -13,5 +13,7 @@ import com.esotericsoftware.kryonet.Listener;
 public class GameListener extends Listener {
     @Override
     public void connected(Connection c)
-    {}
+    {
+        c.sendUDP("connected");
+    }
 }

@@ -25,6 +25,8 @@ public class Client {
 
         Kryo k = s.getKryo();
         k.register(String.class);
+        GameListener listener = new GameListener();
+        s.addListener(listener);
 
     }
 
