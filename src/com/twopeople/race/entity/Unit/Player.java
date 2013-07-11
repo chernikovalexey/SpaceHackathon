@@ -22,6 +22,7 @@ import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.MoveableEntity;
 
 public class Player extends MoveableEntity {
+	private String name;
 	private Turret turret;
 
 	public Player(World world, float x, float y) {
@@ -35,6 +36,14 @@ public class Player extends MoveableEntity {
 		turret = new Turret(world, this);
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	@Override
 	public boolean isComplexFigure() {
 		return true;
@@ -42,10 +51,11 @@ public class Player extends MoveableEntity {
 
 	@Override
 	public Shape[] getBBSkeleton() {
-		Rectangle r = new Rectangle((int) x, (int) y, w, h);
-		r.transform(Transform.createRotateTransform((float) Math.toRadians(angle)));
+		Rectangle r = new Rectangle((int) x, (int) y + 5, w, h - 10);
+		Transform transformation = Transform.createRotateTransform((float) Math.toRadians(angle));
+		r.transform(transformation);
 		Triangulator tr = r.getTriangles();
-		Polygon[] polygons = new Polygon[tr.getTriangleCount()];
+		Polygon[] polygons = new Polygon[tr.getTriangleCount() + 1];
 		float[] v1, v2, v3;
 		for (int i = 0; i < tr.getTriangleCount(); ++i) {
 			v1 = tr.getTrianglePoint(i, 0);
@@ -53,6 +63,8 @@ public class Player extends MoveableEntity {
 			v3 = tr.getTrianglePoint(i, 2);
 			polygons[i] = new Polygon(new float[] { v1[0], v1[1], v2[0], v2[1], v3[0], v3[1] });
 		}
+		// nosePoly = new Polygon(new float[] {});
+		// polygons[polygons.length - 1] = nosePoly;
 		return polygons;
 	}
 
@@ -60,7 +72,7 @@ public class Player extends MoveableEntity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 0.1f;
+		float k = 0.01f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));
@@ -91,7 +103,7 @@ public class Player extends MoveableEntity {
 		image.rotate(angle);
 		image.draw(camera.getScreenX(x), camera.getScreenY(y));
 
-		turret.render(container, g, camera);
+		// turret.render(container, g, camera);
 
 		g.setColor(new Color(255, 255, 255, 125));
 		for (Shape shape : getBBSkeleton()) {

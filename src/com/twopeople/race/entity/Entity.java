@@ -28,14 +28,18 @@ public class Entity {
 	public Entity(World world, float x, float y, int w, int h) {
 		this.world = world;
 		setCoordinates(x, y);
-		this.w = w;
-		this.h = h;
+		setSize(w, h);
 		this.id = entitySerial++;
 	}
 
 	public void setCoordinates(float x, float y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	public void setSize(int w, int h) {
+		this.w = w;
+		this.h = h;
 	}
 
 	public void setOwner(Entity owner) {
