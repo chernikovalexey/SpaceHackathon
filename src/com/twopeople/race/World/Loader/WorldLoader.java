@@ -1,10 +1,8 @@
 package com.twopeople.race.World.Loader;
-
 import com.twopeople.race.World.World;
 import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.Interior.BorderBlock;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -29,6 +27,14 @@ public class WorldLoader {
 		_world = world;
 		_parseImage(dirName + "\\data.png");
 		_sortBorders();
+	}
+
+	public static void load(String name, World world) {
+		try {
+			new WorldLoader(name, world);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void _sortBorders() {
@@ -64,6 +70,7 @@ public class WorldLoader {
 		BorderBlock a, b = null;
 		float minDist, d;
 		BorderBlock minJ = null;
+
 
 		for (int i = 0; i < blocks.size(); i++) {
 			a = blocks.get(i);
