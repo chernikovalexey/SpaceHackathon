@@ -1,6 +1,5 @@
 package com.twopeople.race.World.Loader;
 
-import com.esotericsoftware.kryonet.Server;
 import com.twopeople.race.World.World;
 import com.twopeople.race.entity.StartPoint;
 import org.newdawn.slick.Color;

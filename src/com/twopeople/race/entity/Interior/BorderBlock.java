@@ -6,6 +6,7 @@ import org.newdawn.slick.Graphics;
 import com.twopeople.race.Art;
 import com.twopeople.race.World.Camera;
 import com.twopeople.race.World.World;
+import com.twopeople.race.entity.CollisionType;
 import com.twopeople.race.entity.Entity;
 
 public class BorderBlock extends Entity {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -30,21 +31,22 @@ public class World {
 	private EntityGridVault borders;
 
 	public static final int TILE_SIZE = 16;
-	private int width, height;
+	private int width = 4540, height = 1980;
 
 	private WorldMetaData metaData;
 
 	public World(Camera camera) {
 		this.camera = camera;
-		this.background = new EntityGridVault(256, 256, 6, 6);
-		this.entities = new EntityGridVault(64, 64, 12, 12);
-		this.borders = new EntityGridVault(256, 256, 6, 6);
+
+		this.background = new EntityGridVault(256, 256, width, height);
+		this.entities = new EntityGridVault(128, 128, width, height);
+		this.borders = new EntityGridVault(256, 256, width, height);
 
 		WorldLoader.load("res/maps/map1", this);
 
 		camera.setWorldSize(width, height);
 		entities.add(new Player(this, 250, 250));
-		entities.add(new Asteroid(this, 330, 280));
+		entities.add(new Asteroid(this, 360, 290));
 		for (int x = 0; x < 256 * 6; x += 10) {
 			for (int y = 0; y < 256 * 6; y += 16) {
 				if (random.nextInt(128) % 2 == 0) {
@@ -87,8 +89,65 @@ public class World {
 		renderEntitiesList(entities, container, g);
 		renderEntitiesList(borders, container, g);
 
-		g.drawString("entities: " + entities.size(), 10, 30);
-		g.drawString("borders: " + borders.size(), 10, 50);
+		renderVaultGrid(g, entities);
+
+		Entity[] left = new Entity[borders.size()];
+		int li = 0;
+		for (Entity block : borders.getAll()) {
+			BorderBlock b = (BorderBlock) block;
+			if (b.position == BorderBlock.BlockPosition.Left) {
+				left[li++] = b;
+			}
+		}
+
+		Entity[] right = new Entity[borders.size()];
+		int ri = 0;
+		for (Entity block : borders.getAll()) {
+			BorderBlock b = (BorderBlock) block;
+			if (b.position == BorderBlock.BlockPosition.Right) {
+				right[ri++] = b;
+			}
+		}
+
+		g.setColor(Color.red);
+		for (int i = 0; i < li; ++i) {
+			if (i < li - 1) {
+				g.drawLine(camera.getScreenX(left[i].x), camera.getScreenY(left[i].y),
+						camera.getScreenX(left[i + 1].x), camera.getScreenY(left[i + 1].y));
+			}
+		}
+		g.setColor(Color.green);
+		g.drawLine(camera.getScreenX(left[0].x), camera.getScreenY(left[0].y), camera.getScreenX(left[li - 1].x),
+				camera.getScreenY(left[li - 1].y));
+
+		if (false) {
+			g.setColor(Color.red);
+			for (int i = 0; i < ri; ++i) {
+				if (i < ri - 1) {
+					g.drawLine(camera.getScreenX(right[i].x), camera.getScreenY(right[i].y),
+							camera.getScreenX(right[i + 1].x), camera.getScreenY(right[i + 1].y));
+				}
+			}
+			g.setColor(Color.green);
+			g.drawLine(camera.getScreenX(right[0].x), camera.getScreenY(right[0].y),
+					camera.getScreenX(right[ri - 1].x), camera.getScreenY(right[ri - 1].y));
+		}
+
+		g.drawString("background: " + background.size(), 10, 30);
+		g.drawString("entities: " + entities.size(), 10, 50);
+		g.drawString("borders: " + borders.size(), 10, 70);
+	}
+
+	@SuppressWarnings("unused")
+	private void renderVaultGrid(Graphics g, EntityGridVault vault) {
+		for (int x = 0; x < vault.cellsX; ++x) {
+			for (int y = 0; y < vault.cellsY; ++y) {
+				float xo = x * vault.cellWidth;
+				float yo = y * vault.cellHeight;
+				g.drawRect(camera.getScreenX(xo), camera.getScreenY(yo), xo + vault.cellWidth, yo + vault.cellHeight);
+				g.drawString("" + vault.getAt(x, y).size(), camera.getScreenX(xo + 5), camera.getScreenY(yo + 5));
+			}
+		}
 	}
 
 	private void renderEntitiesList(EntityGridVault vault, GameContainer container, Graphics g) {

@@ -27,7 +27,7 @@ public class Player extends MoveableEntity {
 
 		setCollisionType(CollisionType.All);
 		setFriction(.032f);
-		setMaxSpeed(0.65f);
+		setMaxSpeed(0.15f);
 		setCameraOwner(true);
 	}
 
@@ -39,7 +39,7 @@ public class Player extends MoveableEntity {
 	@Override
 	public Shape[] getBBSkeleton() {
 		Rectangle r = new Rectangle((int) x, (int) y, w, h);
-		r = Transform.createRotateTransform((float)Math.toRadians(angle));
+		r.transform(Transform.createRotateTransform((float) Math.toRadians(angle)));
 		Triangulator tr = r.getTriangles();
 		Polygon[] polygons = new Polygon[tr.getTriangleCount()];
 		float[] v1, v2, v3;

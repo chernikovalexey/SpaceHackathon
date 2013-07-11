@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import com.twopeople.race.World.Camera;
 
 public class EntityGridVault {
-	private int cellsX, cellsY;
-	private int cellWidth, cellHeight;
-	private ArrayList<Entity>[] entities;
+	public int cellsX, cellsY;
+	public int cellWidth, cellHeight;
+	public ArrayList<Entity>[] entities;
 	private int totalAmount;
 
 	@SuppressWarnings("unchecked")
-	public EntityGridVault(int cw, int ch, int w, int h) {
+	public EntityGridVault(int cw, int ch, int world_w, int world_h) {
 		this.cellWidth = cw;
 		this.cellHeight = ch;
-		this.cellsX = w;
-		this.cellsY = h;
+		this.cellsX = world_w / cw;
+		this.cellsY = world_h / ch;
 		this.entities = new ArrayList[cellsX * cellsY];
 		for (int x = 0; x < cellsX; ++x) {
 			for (int y = 0; y < cellsY; ++y) {
