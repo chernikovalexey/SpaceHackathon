@@ -21,6 +21,7 @@ import com.twopeople.race.entity.EntityGridVault;
 public class Player extends AnimatedEntity {
 	private String name;
 	private Turret turret;
+	private boolean controllable = false;
 
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
@@ -39,6 +40,10 @@ public class Player extends AnimatedEntity {
 
 	public String getName() {
 		return name;
+	}
+
+	public void setControllable(boolean ctrl) {
+		this.controllable = ctrl;
 	}
 
 	@Override

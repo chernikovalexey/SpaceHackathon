@@ -48,6 +48,7 @@ public class World {
 		camera.setWorldSize(width, height);
 		Player player = new Player(this, 0, 0);
 		player.setCoordinates(startPoints.get(0).x, startPoints.get(0).y);
+		player.setControllable(true);
 		addPlayer(player);
 		addEntity(new Asteroid(this, 360, 290));
 		for (int x = 0; x < 256 * 6; x += 10) {
@@ -68,8 +69,7 @@ public class World {
 	}
 
 	public void update(GameContainer container, int delta) {
-		
-		System.out.println("wh "+playersPtr.get(0).x+" "+playersPtr.get(0).y);
+		System.out.println("wh " + playersPtr.get(0).x + " " + playersPtr.get(0).y);
 		updateEntitiesGrid(background, container, delta, true);
 		updateEntitiesGrid(entities, container, delta, false);
 		updateEntitiesList(borders, container, delta);
@@ -227,6 +227,13 @@ public class World {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public Player getControllablePlayer() {
+		for (Player player : playersPtr) {
+			if (player.isControllable()) return player;
+		}
+		return null;
 	}
 
 	public void playerConnects(Player player) {
