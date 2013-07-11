@@ -59,8 +59,6 @@ public class MoveableEntity extends Entity {
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
 
-		// x += velocity.x * (delta * .01f) * 2.5f;
-		// y += velocity.y * (delta * .01f) * 2.5f;
 		move(velocity.x * (delta * .01f) * 2.5f, velocity.y * (delta * .01f) * 2.5f);
 
 		if (!isConstantSpeed) {
@@ -74,7 +72,7 @@ public class MoveableEntity extends Entity {
 		if (isCameraOwner) {
 			world.getCamera().centerOn(this);
 		}
-		
+
 		if (world.isOutsideWorld(this)) {
 			ranOutsideWorld();
 		}
