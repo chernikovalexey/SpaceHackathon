@@ -7,8 +7,7 @@ import com.twopeople.race.World.World;
 
 public class MoveableEntity extends Entity {
 	private float friction;
-	protected float acc;
-	private float maxXSpeed, maxYSpeed;
+	public float speed, maxSpeed;
 	private Vector2f velocity = new Vector2f(0, 0);
 	private Vector2f acceleration = new Vector2f(0, 0);
 
@@ -22,12 +21,12 @@ public class MoveableEntity extends Entity {
 		this.friction = f;
 	}
 
-	public void setMaxXSpeed(float xs) {
-		this.maxXSpeed = xs;
+	public void setMaxSpeed(float xs) {
+		this.maxSpeed = xs;
 	}
 
-	public void setMaxYSpeed(float ys) {
-		this.maxYSpeed = ys;
+	public float getMaxSpeed() {
+		return maxSpeed;
 	}
 
 	public void setCameraOwner(boolean o) {
@@ -40,8 +39,8 @@ public class MoveableEntity extends Entity {
 
 	@Override
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
-		acceleration.x = (float) (-(velocity.x * friction) + (direction.x) * acc);
-		acceleration.y = (float) (-(velocity.y * friction) + (direction.y) * acc);
+		acceleration.x = (float) (-(velocity.x * friction) + (direction.x) * -speed);
+		acceleration.y = (float) (-(velocity.y * friction) + (direction.y) * -speed);
 
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
@@ -49,12 +48,14 @@ public class MoveableEntity extends Entity {
 		x += velocity.x * (delta * .01f) * 5;
 		y += velocity.y * (delta * .01f) * 5;
 
+		speed *= delta * 0.35f;
+
 		if (isMoving()) {
 			vault.moved(this);
 		}
 
 		if (isCameraOwner) {
-			//world.getCamera().centerOn(this);
+			 world.getCamera().centerOn(this);
 		}
 
 		// System.out.println(acceleration.x + ", " + acceleration.y);

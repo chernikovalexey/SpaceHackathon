@@ -55,7 +55,7 @@ public class Camera {
 
 	public void centerOn(Entity entity) {
 		setTargetX(entity.x - getScreenWidth() * .2f);
-		setTargetY(entity.y - entity.y - getScreenHeight() * .25f);
+		setTargetY(entity.y - getScreenHeight() * .25f);
 	}
 
 	public void shake(int shakes) {
