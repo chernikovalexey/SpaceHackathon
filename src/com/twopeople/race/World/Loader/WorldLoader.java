@@ -105,6 +105,9 @@ public class WorldLoader {
 				WorldColor.commands.get(pixelColor).execute(_world, i, j, pixelColor);
 
 			}
+
+        _world.setWidth(img.getWidth() * World.TILE_SIZE);
+        _world.setHeight(img.getHeight() * World.TILE_SIZE);
 	}
 
 	private byte[] data;

@@ -23,6 +23,8 @@ public class World {
 	private Camera camera;
 	private Random random = new Random();
 
+
+    private int width, height;
 	private ArrayList<StartPoint> startPoints = new ArrayList<StartPoint>();
 	private EntityGridVault background;
 	private EntityGridVault entities;
@@ -51,6 +53,11 @@ public class World {
 			}
 		}
 	}
+
+    public void addStartPoint(StartPoint point)
+    {
+         startPoints.add(point);
+    }
 
 	public void setMetaData(WorldMetaData data) {
 		this.metaData = data;
@@ -121,4 +128,20 @@ public class World {
 	public ArrayList<Entity> getCollidableEntities(Entity entity) {
 		return entities.getCollidables(entity);
 	}
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }
