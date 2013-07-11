@@ -18,13 +18,6 @@ public class GameController extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer arg0) throws SlickException {
-        try {
-            new WorldLoader("E:\\Projects\\Java\\map", new World(new Camera(800,800)));
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
         addState(new Game());
 		enterState(2);
 	}
