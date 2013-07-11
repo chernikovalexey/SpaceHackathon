@@ -15,8 +15,8 @@ public class Player extends MoveableEntity {
 	public Player(World world, float x, float y) {
 		super(world, x, y, 64, 64);
 
-		setFriction(0.1f);
-		setMaxSpeed(3.5f);
+		setFriction(0.05f);
+		setMaxSpeed(10.5f);
 		setCameraOwner(true);
 	}
 
@@ -25,22 +25,20 @@ public class Player extends MoveableEntity {
 		Input input = container.getInput();
 
 		if (input.isKeyDown(Input.KEY_A)) {
-			angle -= 0.5f;
+			rotate(-delta / speed);
 		}
 		if (input.isKeyDown(Input.KEY_D)) {
-			angle += 0.5f;
+			rotate(delta / speed);
 		}
 		if (input.isKeyDown(Input.KEY_W)) {
-			speed += 0.1f;
+			speed += 0.525f;
 		}
 		if (input.isKeyDown(Input.KEY_S)) {
-			speed = 0;
+			speed -= 0.05f;
 		}
-		if (speed > getMaxSpeed()) speed = getMaxSpeed();
 
 		direction.set((float) Math.cos(Math.toRadians(angle + 90)), (float) Math.sin(Math.toRadians(angle + 90)));
 
-		move(direction, delta);
 		super.update(container, delta, vault);
 	}
 

@@ -39,33 +39,26 @@ public class MoveableEntity extends Entity {
 
 	@Override
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
-		acceleration.x = (float) (-(velocity.x * friction) + (direction.x) * -speed);
-		acceleration.y = (float) (-(velocity.y * friction) + (direction.y) * -speed);
+		if (speed < 0) speed = 0;
+		if (speed > getMaxSpeed()) speed = getMaxSpeed();
+
+		acceleration.x = (float) (-(velocity.x * friction) - direction.x * speed);
+		acceleration.y = (float) (-(velocity.y * friction) - direction.y * speed);
 
 		velocity.x += acceleration.x * delta * .08f;
 		velocity.y += acceleration.y * delta * .08f;
 
-		x += velocity.x * (delta * .01f) * 5;
-		y += velocity.y * (delta * .01f) * 5;
+		x += velocity.x * (delta * .01f) * 2.5f;
+		y += velocity.y * (delta * .01f) * 2.5f;
 
-		speed *= delta * 0.35f;
+		speed *= delta * friction * 3f;
 
 		if (isMoving()) {
 			vault.moved(this);
 		}
 
 		if (isCameraOwner) {
-			 world.getCamera().centerOn(this);
+			// world.getCamera().centerOn(this);
 		}
-
-		// System.out.println(acceleration.x + ", " + acceleration.y);
-		// System.out.println(velocity.x + ", " + velocity.y);
-		// System.out.println(x + ", " + y);
-		// System.out.println(getCellX() + ", " + getCellY());
-		// System.out.println("=============");
-	}
-
-	public void move(Vector2f direction, int delta) {
-
 	}
 }

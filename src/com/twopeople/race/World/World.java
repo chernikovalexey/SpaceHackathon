@@ -2,25 +2,28 @@ package com.twopeople.race.World;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import com.twopeople.race.entity.BorderBlock;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import com.twopeople.race.World.Loader.WorldMetaData;
+import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.Unit.Player;
 
 public class World {
 	private Camera camera;
+	private Random random = new Random();
 
 	private EntityGridVault entities;
+	private EntityGridVault borders;
 
 	public static final int TILE_SIZE = 16;
 
 	private WorldMetaData metaData;
-	private EntityGridVault borders;
 
 	public World(Camera camera) {
 		this.camera = camera;
@@ -28,6 +31,7 @@ public class World {
 		this.borders = new EntityGridVault(256, 256, 6, 6);
 
 		entities.add(new Player(this, 250, 250));
+		entities.add(new Asteroid(this, 280, 280));
 	}
 
 	public void setMetaData(WorldMetaData data) {
@@ -68,6 +72,10 @@ public class World {
 
 	public Camera getCamera() {
 		return camera;
+	}
+
+	public Random getRandom() {
+		return random;
 	}
 
 	public EntityGridVault getBorders() {
