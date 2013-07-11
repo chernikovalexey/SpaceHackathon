@@ -49,7 +49,9 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/kryonet.jar!/" />
         </CLASSES>
-        <JAVADOC />
+        <JAVADOC>
+          <root url="file://$MODULE_DIR$/../javadoc" />
+        </JAVADOC>
         <SOURCES />
       </library>
     </orderEntry>
