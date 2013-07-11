@@ -72,6 +72,11 @@ public class Camera {
 		setTargetY(entity.y - entity.h / 2 - getScreenHeight() * .3f);
 	}
 
+	public boolean isVisible(Entity entity) {
+		return entity.x >= getX() - entity.w && entity.y >= getY() - entity.h && entity.x <= getX() + getScreenWidth()
+				&& entity.y <= getY() + getScreenHeight();
+	}
+
 	public void shake(int shakes) {
 		shakeAmplitude += shakes;
 	}

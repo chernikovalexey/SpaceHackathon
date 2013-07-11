@@ -10,7 +10,6 @@ import com.twopeople.race.entity.CollisionType;
 import com.twopeople.race.entity.Entity;
 
 public class BorderBlock extends Entity {
-
 	public enum BlockPosition {
 		Left, Right
 	}

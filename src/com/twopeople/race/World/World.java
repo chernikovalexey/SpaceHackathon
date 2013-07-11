@@ -43,6 +43,8 @@ public class World {
 		setWidth(size.width);
 		setHeight(size.height);
 
+		System.out.println(width + ", " + height);
+
 		this.background = new EntityGridVault(256, 256, width, height);
 		this.entities = new EntityGridVault(128, 128, width, height);
 		this.borders = new EntityGridVault(256, 256, width, height);
@@ -151,8 +153,11 @@ public class World {
 			for (int y = 0; y < vault.cellsY; ++y) {
 				float xo = x * vault.cellWidth;
 				float yo = y * vault.cellHeight;
-				g.drawRect(camera.getScreenX(xo), camera.getScreenY(yo), xo + vault.cellWidth, yo + vault.cellHeight);
-				g.drawString("" + vault.getAt(x, y).size(), camera.getScreenX(xo + 5), camera.getScreenY(yo + 5));
+				if (camera.isVisible(new Entity(this, xo, yo, vault.cellWidth, vault.cellHeight))) {
+					g.drawRect(camera.getScreenX(xo), camera.getScreenY(yo), xo + vault.cellWidth, yo
+							+ vault.cellHeight);
+					g.drawString("" + vault.getAt(x, y).size(), camera.getScreenX(xo + 5), camera.getScreenY(yo + 5));
+				}
 			}
 		}
 	}
