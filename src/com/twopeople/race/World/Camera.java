@@ -47,15 +47,17 @@ public class Camera {
 
 	public void setTargetX(float x) {
 		this.targetX = x;
+		if (targetX < 0) targetX = 0;
 	}
 
-	public void setTargetY(float z) {
-		this.targetY = z;
+	public void setTargetY(float y) {
+		this.targetY = y;
+		if (targetY < 0) targetY = 0;
 	}
 
 	public void centerOn(Entity entity) {
-		setTargetX(entity.x - getScreenWidth() * .2f);
-		setTargetY(entity.y - getScreenHeight() * .25f);
+		setTargetX(entity.x - entity.w / 2 - getScreenWidth() * .25f);
+		setTargetY(entity.y - entity.h / 2 - getScreenHeight() * .3f);
 	}
 
 	public void shake(int shakes) {

@@ -2,8 +2,9 @@ package com.twopeople.race.World.Loader;
 
 import com.twopeople.race.World.Loader.IWorldColorCommand;
 import com.twopeople.race.World.World;
-import com.twopeople.race.entity.BorderBlock;
 import com.twopeople.race.entity.Entity;
+import com.twopeople.race.entity.Interior.BorderBlock;
+
 import org.newdawn.slick.Color;
 
 /**

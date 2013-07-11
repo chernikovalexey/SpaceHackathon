@@ -8,6 +8,7 @@ public class EntityGridVault {
 	private int cellsX, cellsY;
 	private int cellWidth, cellHeight;
 	private ArrayList<Entity>[] entities;
+	private int totalAmount;
 
 	@SuppressWarnings("unchecked")
 	public EntityGridVault(int cw, int ch, int w, int h) {
@@ -46,10 +47,13 @@ public class EntityGridVault {
 		int cy = getCellY(entity);
 		entity.setCell(cx, cy);
 		getAt(cx, cy).add(entity);
+		++totalAmount;
 	}
 
 	public void remove(Entity entity) {
-		getAt(entity.getCellX(), entity.getCellY()).remove(entity);
+		if (getAt(entity.getCellX(), entity.getCellY()).remove(entity)) {
+			--totalAmount;
+		}
 	}
 
 	public ArrayList<Entity> getAll() {
@@ -81,6 +85,41 @@ public class EntityGridVault {
 		}
 
 		return visible;
+	}
+
+	public ArrayList<Entity> getCollidables(Entity entity) {
+		ArrayList<Entity> intersecting = new ArrayList<Entity>();
+		if (totalAmount == 0) return intersecting;
+		ArrayList<Entity> ranged = new ArrayList<Entity>();
+
+		int cx = getCellX(entity);
+		int cy = getCellY(entity);
+		int scx = cx - 1;
+		int scy = cy - 1;
+		int ecx = cx + 1;
+		int ecy = cy + 1;
+		if (scx < 0) scx = 0;
+		if (scy < 0) scy = 0;
+		if (ecx >= cellsX) ecx = cellsX - 1;
+		if (ecy >= cellsY) ecy = cellsY - 1;
+
+		for (int x = scx; x <= ecx; ++x) {
+			for (int y = scy; y <= ecy; ++y) {
+				ranged.addAll(getAt(x, y));
+			}
+		}
+
+		for (Entity e : ranged) {
+			if (entity.collidesWith(e) && entity != e) {
+				intersecting.add(e);
+			}
+		}
+
+		return intersecting;
+	}
+
+	public int size() {
+		return totalAmount;
 	}
 
 	public void moved(Entity entity) {
