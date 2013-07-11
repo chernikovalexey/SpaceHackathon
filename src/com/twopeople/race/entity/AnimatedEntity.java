@@ -26,7 +26,7 @@ public class AnimatedEntity extends MoveableEntity {
 		this.animSpeed = speed;
 	}
 
-	public void setAnimation(SpriteSheet sprite, int sx, int ex, int sy, int ey) {
+	public void setAnimation(SpriteSheet sprite, int sx, int ex, int sy, int ey, boolean reflect) {
 		ArrayList<Image> images = new ArrayList<Image>();
 
 		for (int x = sx; x <= ex; ++x) {
@@ -35,10 +35,19 @@ public class AnimatedEntity extends MoveableEntity {
 			}
 		}
 
-		Image[] a_images = new Image[images.size()];
+		int s = images.size();
+		if (reflect) s = s * 2 - 2;
+		Image[] a_images = new Image[s];
 		for (int i = 0; i < images.size(); ++i) {
 			a_images[i] = images.get(i);
 		}
+		if (reflect) {
+			int k = images.size() - 1;
+			for (int i = images.size() - 1; i >= 1; --i) {
+				a_images[k++] = images.get(i);
+			}
+		}
+
 		images.clear();
 
 		animation = new Animation(a_images, animSpeed, true);

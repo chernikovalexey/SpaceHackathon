@@ -22,8 +22,8 @@ public class BorderBlock extends AnimatedEntity {
 
 	public BorderBlock(World world, float x, float y) {
 		super(world, x, y, 16, 16);
-		setAnimation(Art.track, 0, 7, 0, 0);
-		setAnimSpeed(200);
+		setAnimSpeed(75);
+		setAnimation(Art.track, 0, 7, 0, 0, true);
 	}
 
 	public void render(GameContainer container, Graphics g, Camera camera) {

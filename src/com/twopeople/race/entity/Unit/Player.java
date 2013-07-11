@@ -1,6 +1,5 @@
 package com.twopeople.race.entity.Unit;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -33,7 +32,7 @@ public class Player extends AnimatedEntity {
 		setFriction(.032f);
 		setMaxSpeed(0.55f);
 		setCameraOwner(true);
-		setAnimation(Art.ships, 0, 0, 0, 4);
+		setAnimation(Art.ships, 0, 0, 0, 4, false);
 		turret = new Turret(world, this);
 	}
 

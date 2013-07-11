@@ -39,8 +39,7 @@ public class Turret extends Entity {
 		if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
 			float ax = world.getCamera().getAbsoluteX(input.getMouseX());
 			float ay = world.getCamera().getAbsoluteY(input.getMouseY());
-			Vector2f dir = new Vector2f(angle);
-			System.out.println(dir.x + ", " + dir.y);
+			Vector2f dir = new Vector2f(-angle);
 			world.addProjectile(new Projectile(world, x, y, direction));
 		}
 	}
