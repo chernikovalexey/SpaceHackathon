@@ -92,7 +92,7 @@ public class Player extends AnimatedEntity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 1f;
+		float k = 0.5f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));

@@ -14,21 +14,33 @@ import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.Projectile;
 
 public class Turret extends Entity {
+	private long lastShoot = System.currentTimeMillis();
+	private final int CHILL_TIME = 150;
+
 	public Turret() {
 	}
-	
+
 	public Turret(World world, Entity owner) {
 		super(world, owner.x, owner.y, 16, 16);
 		setOwner(owner);
 		bindToParent(owner);
 	}
 
-
 	public void updateDirection(float ms, float my) {
 		Vector2f playerDir = (new Vector2f(ms - x, my - y)).normalise();
 		direction.x = playerDir.x;
 		direction.y = playerDir.y;
 		angle = (float) direction.getTheta() + 90;
+	}
+
+	public void shoot(float ax, float ay) {
+		long current = System.currentTimeMillis();
+		if (current - lastShoot > CHILL_TIME) {
+			lastShoot = current;
+
+			Vector2f dir = new Vector2f(angle);
+			world.addProjectile(new Projectile(world, x, y, direction));
+		}
 	}
 
 	@Override
@@ -40,8 +52,7 @@ public class Turret extends Entity {
 		if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
 			float ax = world.getCamera().getAbsoluteX(input.getMouseX());
 			float ay = world.getCamera().getAbsoluteY(input.getMouseY());
-			Vector2f dir = new Vector2f(-angle);
-			world.addProjectile(new Projectile(world, x, y, direction));
+			shoot(ax, ay);
 		}
 	}
 

@@ -12,19 +12,24 @@ import com.twopeople.race.World.World;
 import java.util.ArrayList;
 
 public class Entity {
-	public int id;
 	private static int entitySerial = 0;
-    private static ArrayList<Entity> all = new ArrayList<>();
+	private static ArrayList<Entity> all = new ArrayList<>();
+
 	public World world;
+
+	public int id;
 	public float x, y;
 	public int w, h;
 	public int cellX, cellY;
-	public float angle = 0f;
-    public int health;
+
 	public CollisionType collisionType = CollisionType.None;
-	private boolean remove = false;
-    public Entity owner;
-    public Entity parent;
+
+	public float angle = 0f;
+	public int health;
+	public Entity owner;
+	public Entity parent;
+
+	protected boolean remove = false;
 
 	public Vector2f direction = new Vector2f(0, 0);
 
@@ -36,7 +41,7 @@ public class Entity {
 		setCoordinates(x, y);
 		setSize(w, h);
 		this.id = entitySerial++;
-        all.add(this);
+		all.add(this);
 	}
 
 	public void setCoordinates(float x, float y) {
@@ -150,7 +155,7 @@ public class Entity {
 	public void render(GameContainer container, Graphics g, Camera camera) {
 	}
 
-    public static Entity getById(int id) {
-         return all.get(id - 1);
-    }
+	public static Entity getById(int id) {
+		return all.get(id - 1);
+	}
 }
