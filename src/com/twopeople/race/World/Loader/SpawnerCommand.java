@@ -14,7 +14,7 @@ import org.newdawn.slick.Color;
 public class SpawnerCommand implements IWorldColorCommand {
     @Override
     public void execute(World world, int px, int py, Color color) {
-        StartPoint sp=new StartPoint(world, px * World.TILE_SIZE, py* World.TILE_SIZE);
+        StartPoint sp=new StartPoint(world, px * World.TILE_SIZE, py * World.TILE_SIZE);
 
         world.addStartPoint(sp);
     }
