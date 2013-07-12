@@ -31,6 +31,16 @@ public class Camera {
 		return (float) (Math.floor(x) + Math.cos(shakeAnimationState * Math.PI * 30) * shakeAmplitude);
 	}
 
+    public void setY(float y)
+    {
+        this.y=y;
+    }
+
+    public void setX(float x)
+    {
+        this.x=x;
+    }
+
 	public float getY() {
 		return (float) (Math.floor(y) + Math.sin(shakeAnimationState * Math.PI * 13) * shakeAmplitude * .7f);
 	}

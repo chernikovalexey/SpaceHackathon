@@ -31,6 +31,7 @@ public class World {
 	private ArrayList<Player> playersPtr = new ArrayList<Player>();
 	private ArrayList<Entity> borders = new ArrayList<Entity>();
 	private EntityGridVault projectiles;
+    private ArrayList<ParallaxLayer> layers = new ArrayList<>();
 
 	public static final int TILE_SIZE = 16;
 	private int width = 4540, height = 1980;
@@ -44,7 +45,6 @@ public class World {
 		setWidth(size.width);
 		setHeight(size.height);
 
-		this.background = new EntityGridVault(256, 256, width, height);
 		this.entities = new EntityGridVault(800, 600, width, height);
 		this.projectiles = new EntityGridVault(256, 256, width, height);
 
@@ -70,13 +70,7 @@ public class World {
 			}
 		}
 
-		for (int x = 0; x < 256 * 6; x += 10) {
-			for (int y = 0; y < 256 * 6; y += 16) {
-				if (random.nextInt(128) % 2 == 0) {
-					// background.add(new Star(this, x, y));
-				}
-			}
-		}
+        ParallaxLayer.generate(this, layers);
 	}
 
 	private Entity[] findBorderBlocks(BlockPosition pos) {
@@ -103,13 +97,18 @@ public class World {
 	}
 
 	public void update(GameContainer container, int delta) {
-		updateEntitiesGrid(background, container, delta, true);
 		updateEntitiesGrid(entities, container, delta, false);
 		updateEntitiesGrid(projectiles, container, delta, false);
 		updateEntitiesList(borders, container, delta);
+        updateLayers(layers, container, delta);
 	}
 
-	private void updateEntitiesGrid(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
+    private void updateLayers(ArrayList<ParallaxLayer> layers, GameContainer container, int delta) {
+        for(ParallaxLayer layer: layers)
+            layer.update(container, delta);
+    }
+
+    private void updateEntitiesGrid(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
 		Iterator<Entity> iterator = vis ? vault.getVisible(camera).iterator() : vault.getAll().iterator();
 		while (iterator.hasNext()) {
 			Entity e = iterator.next();
@@ -130,9 +129,7 @@ public class World {
 	}
 
 	public void render(GameContainer container, Graphics g) {
-		g.setColor(new Color(8, 8, 41, 255));
-		g.fillRect(0, 0, camera.getScreenWidth(), camera.getScreenHeight());
-		renderEntitiesGrid(background, container, g);
+        renderLayers(container, g);
 		renderEntitiesGrid(entities, container, g);
 		renderEntitiesGrid(projectiles, container, g);
 
@@ -140,12 +137,21 @@ public class World {
 
 		renderEntitiesList(borders, container, g);
 
+
+
 		g.setColor(Color.white);
-		g.drawString("background: " + background.size(), 10, 30);
+
 		g.drawString("entities: " + entities.size(), 10, 50);
 		g.drawString("borders: " + borders.size(), 10, 70);
 		g.drawString("projectiles: " + projectiles.size(), 10, 90);
 	}
+
+    private void renderLayers(GameContainer container, Graphics g)
+    {
+        for (ParallaxLayer l:layers)
+            l.render(container, g, camera);
+
+    }
 
 	private void renderVaultGrid(Graphics g, EntityGridVault vault) {
 		for (int x = 0; x <= vault.cellsX; ++x) {
