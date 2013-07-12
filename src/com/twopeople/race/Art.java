@@ -10,6 +10,7 @@ public class Art {
 	public static final SpriteSheet track = loadSprite("res/images/track.png", 16, 16);
 	public static final SpriteSheet explosions = loadSprite("res/images/explosions.png", 96, 96);
 	public static final SpriteSheet turret = loadSprite("res/images/turret.png", 32, 24);
+	public static final SpriteSheet cosmoDust = loadSprite("res/images/cosmoDust.png", 512, 512);
 
 	public static SpriteSheet loadSprite(String file, int w, int h) {
 		try {

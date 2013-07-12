@@ -2,23 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/CosmoDust.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayerManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/maps/map001/data.png" afterPath="$PROJECT_DIR$/res/maps/map001/data.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/World/Camera.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/World/Camera.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/Art.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/Art.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twopeople/race/World/World.java" afterPath="$PROJECT_DIR$/src/com/twopeople/race/World/World.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SpaceHackathon2.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373579847816" ignored="false" />
+    <file path="/Dummy.txt" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373594205271" ignored="false" />
     <file path="/fragment.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373558787543" ignored="false" />
     <file path="/GameController.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373505547522" ignored="false" />
     <file path="/SpawnerCommand.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373531932725" ignored="false" />
     <file path="/WorldColor.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373507391564" ignored="false" />
     <file path="/Client.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373542305773" ignored="false" />
     <file path="/GameListener.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373532126605" ignored="false" />
-    <file path="/World.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373588996866" ignored="false" />
+    <file path="/World.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373593069216" ignored="false" />
     <file path="/WorldLoader.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373541487598" ignored="false" />
     <file path="/GameServer.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373554113134" ignored="false" />
     <file path="/ServerListener.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373544775719" ignored="false" />
@@ -36,9 +37,12 @@
     <file path="/MoveableEntity.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373576165283" ignored="false" />
     <file path="/Turret.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373577093110" ignored="false" />
     <file path="/BorderBlock.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373577219987" ignored="false" />
-    <file path="/ParallaxLayer.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373589036220" ignored="false" />
+    <file path="/ParallaxLayer.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373593864781" ignored="false" />
     <file path="/Star.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373589476519" ignored="false" />
     <file path="/Camera.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373586621701" ignored="false" />
+    <file path="/Art.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373590164021" ignored="false" />
+    <file path="/CosmoDust.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373593872733" ignored="false" />
+    <file path="/ParallaxLayerManager.java" changelist="9780bf5e-ffc8-42e4-9c67-6bbefe9059ab" time="1373592712061" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +91,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/com/twopeople/race/GameController.java" line="6" class="GameController.java" package="">
         <option name="ENABLED" value="true" />
@@ -103,8 +109,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -114,21 +118,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ParallaxLayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java">
+      <file leaf-file-name="ParallaxLayerManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="36" selection-start="3075" selection-end="3075" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="18" column="27" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Star.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Star.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="34" selection-start="427" selection-end="427" vertical-scroll-proportion="0.2125">
+            <state line="64" column="43" selection-start="1796" selection-end="1796" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,7 +139,27 @@
       <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="21" selection-start="3157" selection-end="3157" vertical-scroll-proportion="0.0">
+            <state line="142" column="44" selection-start="4401" selection-end="4401" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParallaxLayer.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.94">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CosmoDust.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/CosmoDust.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,15 +178,6 @@
         <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/UdpClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="63" column="45" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/IListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="16" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -193,9 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/twopeople/race/Network/Test.java" />
-        <option value="$PROJECT_DIR$/src/com/twopeople/race/GameController.java" />
-        <option value="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Player.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/Network/IListener.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/entity/Asteroid.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Turret.java" />
@@ -206,15 +216,17 @@
         <option value="$PROJECT_DIR$/src/com/twopeople/race/Network/ClientListener.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/Network/Request.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/World/Camera.java" />
-        <option value="$PROJECT_DIR$/src/com/twopeople/race/World/World.java" />
-        <option value="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java" />
+        <option value="$PROJECT_DIR$/src/com/twopeople/race/Art.java" />
         <option value="$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java" />
+        <option value="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayerManager.java" />
+        <option value="$PROJECT_DIR$/src/com/twopeople/race/World/World.java" />
+        <option value="$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/CosmoDust.java" />
+        <option value="$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
-    <option name="y" value="-9" />
     <option name="width" value="1932" />
     <option name="height" value="1050" />
   </component>
@@ -234,7 +246,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -246,6 +258,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -362,35 +375,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpaceHackathon2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpaceHackathon2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.twopeople.race" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Interior" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -398,10 +388,6 @@
               <option name="myItemId" value="SpaceHackathon2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -449,7 +435,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Network" />
+              <option name="myItemId" value="World" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="race" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="state" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -472,6 +480,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="race" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Interior" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpaceHackathon2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -500,128 +548,6 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.twopeople.race.Network" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/com/twopeople/race/World/World.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/com/twopeople/race/entity/Entity.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/com/twopeople/race/entity/Projectile.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/com/twopeople/race/entity/Unit/Player.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/com/twopeople/race/entity/Unit/Turret.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/twopeople/race/World/World.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/twopeople/race/entity/Entity.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/twopeople/race/entity/Projectile.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Player.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/twopeople/race/entity/Unit/Turret.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/res/images/cosmoDust.png</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Application.GameStartup">
     <configuration default="false" name="GameStartup" type="Application" factoryName="Application" temporary="true">
@@ -772,19 +698,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -811,6 +724,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -983,11 +909,15 @@
       <created>1373579853974</created>
       <updated>1373579853974</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Parallax&#10;">
+      <created>1373589606654</created>
+      <updated>1373589606654</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1050" extended-state="0" />
+    <frame x="-9" y="0" width="1932" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990867" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1000,8 +930,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1012,6 +941,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1054,7 +984,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="World saving&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parallax&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1082,6 +1012,7 @@
     <MESSAGE value="Network connection part 1&#10;" />
     <MESSAGE value="Network connection part 2&#10;" />
     <MESSAGE value="World saving&#10;" />
+    <MESSAGE value="Parallax&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1091,67 +1022,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/ClientListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="7" selection-start="441" selection-end="441" vertical-scroll-proportion="0.37274548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/state/BasicGameState.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="16" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.34766355">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/state/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="679" selection-end="679" vertical-scroll-proportion="0.45535713">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/SpriteSheet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="35" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.34766355">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Art.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="36" selection-start="341" selection-end="341" vertical-scroll-proportion="0.2125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/AnimatedEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="340" selection-end="340" vertical-scroll-proportion="0.12142857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="15" selection-start="873" selection-end="873" vertical-scroll-proportion="0.60535717">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/state/StateBasedGame.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="25" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.31028038">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_21/src.zip!/java/util/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="399" column="17" selection-start="15813" selection-end="15813" vertical-scroll-proportion="0.33214286">
-          <folding />
-        </state>
+        <state line="39" column="25" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.31028038" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/MoveableEntity.java">
@@ -1161,25 +1034,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java">
+    <entry file="file://$PROJECT_DIR$/res/images/cosmoDust.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="36" selection-start="3075" selection-end="3075" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="149" column="16" selection-start="2720" selection-end="2720" vertical-scroll-proportion="0.45357144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/SpriteSheet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="35" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.34766355" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Art.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="693" selection-end="693" vertical-scroll-proportion="0.33392859">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/IListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="16" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="16" selection-start="398" selection-end="398" vertical-scroll-proportion="0.39464286" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/Network/UdpClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="45" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="27" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_21/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="237" column="15" selection-start="8723" selection-end="8723" vertical-scroll-proportion="0.33214286" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/slick.jar!/org/newdawn/slick/AppGameContainer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="3525" selection-end="3525" vertical-scroll-proportion="-17.32" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="44" selection-start="4401" selection-end="4401" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="43" selection-start="1796" selection-end="1796" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1191,17 +1108,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/World.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/CosmoDust.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="21" selection-start="3157" selection-end="3157" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/entity/Interior/Star.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twopeople/race/World/ParallaxLayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="427" selection-end="427" vertical-scroll-proportion="0.2125">
-          <folding />
+        <state line="47" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.94">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
