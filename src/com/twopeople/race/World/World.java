@@ -130,6 +130,8 @@ public class World {
 	}
 
 	public void render(GameContainer container, Graphics g) {
+		g.setColor(new Color(8, 8, 41, 255));
+		g.fillRect(0, 0, camera.getScreenWidth(), camera.getScreenHeight());
 		renderEntitiesGrid(background, container, g);
 		renderEntitiesGrid(entities, container, g);
 		renderEntitiesGrid(projectiles, container, g);

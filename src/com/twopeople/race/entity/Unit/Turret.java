@@ -1,10 +1,14 @@
 package com.twopeople.race.entity.Unit;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Transform;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.twopeople.race.Art;
@@ -60,7 +64,7 @@ public class Turret extends Entity {
 	@Override
 	public void render(GameContainer container, Graphics g, Camera camera) {
 		Image image = Art.turret.getSprite(0, 0);
-		image.setCenterOfRotation(w / 2, h / 2 + 3.5f);
+		image.setCenterOfRotation(w / 2, h / 2 + 3f);
 		image.rotate(angle);
 
 		Shape[] skeleton = owner.getBBSkeleton();
@@ -73,7 +77,9 @@ public class Turret extends Entity {
 		cx /= skeleton.length;
 		cy /= skeleton.length;
 
-		System.out.println(cx + ", " + cy);
-		image.draw(camera.getScreenX(x) + cx - w / 2, camera.getScreenY(y) + cy - h / 2 - 3.5f);
+		float mx = (cx + owner.direction.x * 20.5f);
+		float my = (cy + owner.direction.y * 20);
+
+		image.draw(camera.getScreenX(x) + mx - w / 2, camera.getScreenY(y) + my - h / 2 - 3f);
 	}
 }

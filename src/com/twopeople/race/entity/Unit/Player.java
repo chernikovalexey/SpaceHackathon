@@ -19,7 +19,7 @@ import com.twopeople.race.entity.EntityGridVault;
 
 public class Player extends AnimatedEntity {
 	public String name;
-    public Turret turret;
+	public Turret turret;
 	private boolean controllable = false;
 
 	public Player() {
@@ -58,8 +58,13 @@ public class Player extends AnimatedEntity {
 	}
 
 	@Override
+	public Shape getBounds() {
+		return new Rectangle(x, y + 5 + 15, w, h - 10 - 15);
+	}
+
+	@Override
 	public Shape[] getBBSkeleton() {
-		Rectangle r = new Rectangle(x, y + 5 + 15, w, h - 10 - 15);
+		Rectangle r = (Rectangle) getBounds();
 		Transform transformation = Transform.createRotateTransform((float) Math.toRadians(angle), r.getCenterX(),
 				r.getCenterY());
 		Triangulator tr = r.getTriangles();
@@ -92,7 +97,7 @@ public class Player extends AnimatedEntity {
 	public void update(GameContainer container, int delta, EntityGridVault vault) {
 		Input input = container.getInput();
 
-		float k = 0.5f;
+		float k = 0.01f;
 
 		if (input.isKeyDown(Input.KEY_A)) {
 			rotate(getRealSpeed() / (-delta * k));

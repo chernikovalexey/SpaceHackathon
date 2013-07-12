@@ -15,7 +15,7 @@ public class Projectile extends MoveableEntity {
 		super(world, x, y, 6, 6);
 		this.direction = direction;
 		setFriction(0.0025f);
-		setMaxSpeed(.025f);
+		setMaxSpeed(.065f);
 		speed = getMaxSpeed();
 	}
 
@@ -25,8 +25,10 @@ public class Projectile extends MoveableEntity {
 
 	@Override
 	public void render(GameContainer container, Graphics g, Camera camera) {
-		 Image image = Art.turret.getSprite(1, 0);
-		 image.draw(camera.getScreenX(x), camera.getScreenY(y));
+		Image image = Art.turret.getSprite(1, 0);
+		image.setCenterOfRotation(w / 2, h / 2);
+		image.rotate((float) direction.normalise().getTheta());
+		image.draw(camera.getScreenX(x), camera.getScreenY(y));
 	}
 
 	@Override
