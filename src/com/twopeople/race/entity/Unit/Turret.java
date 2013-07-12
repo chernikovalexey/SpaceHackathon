@@ -73,8 +73,8 @@ public class Turret extends Entity {
 		cx /= skeleton.length;
 		cy /= skeleton.length;
 
-		float mx = (cx - owner.direction.x * 20);
-		float my = (cy - owner.direction.y * 20);
+		float mx = (cx + owner.direction.x * 20);
+		float my = (cy + owner.direction.y * 20);
 
 		image.draw(camera.getScreenX(x) + mx - w / 2, camera.getScreenY(y) + my - h / 2 - 3f);
 	}

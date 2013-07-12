@@ -68,7 +68,7 @@ public class MoveableEntity extends Entity {
 			speed -= getMaxSpeed() * friction * delta * 0.05f;
 		}
 
-		if (isMoving()) {
+		if (isMoving() && vault != null) {
 			vault.moved(this);
 		}
 

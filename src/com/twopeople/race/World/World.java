@@ -11,7 +11,6 @@ import org.newdawn.slick.Graphics;
 import com.twopeople.race.World.Loader.WorldLoader;
 import com.twopeople.race.World.Loader.WorldLoader.WorldSize;
 import com.twopeople.race.World.Loader.WorldMetaData;
-import com.twopeople.race.entity.Asteroid;
 import com.twopeople.race.entity.Entity;
 import com.twopeople.race.entity.EntityGridVault;
 import com.twopeople.race.entity.Projectile;
@@ -26,12 +25,11 @@ public class World {
 	private Random random = new Random();
 
 	private ArrayList<StartPoint> startPoints = new ArrayList<StartPoint>();
-	private EntityGridVault background;
 	private EntityGridVault entities;
 	private ArrayList<Player> playersPtr = new ArrayList<Player>();
 	private ArrayList<Entity> borders = new ArrayList<Entity>();
 	private EntityGridVault projectiles;
-    private ArrayList<ParallaxLayer> layers = new ArrayList<>();
+	private ArrayList<ParallaxLayer> layers = new ArrayList<>();
 
 	public static final int TILE_SIZE = 16;
 	private int width = 4540, height = 1980;
@@ -70,7 +68,7 @@ public class World {
 			}
 		}
 
-        ParallaxLayer.generate(this, layers);
+		ParallaxLayer.generate(this, layers);
 	}
 
 	private Entity[] findBorderBlocks(BlockPosition pos) {
@@ -100,15 +98,13 @@ public class World {
 		updateEntitiesGrid(entities, container, delta, false);
 		updateEntitiesGrid(projectiles, container, delta, false);
 		updateEntitiesList(borders, container, delta);
-        updateLayers(layers, container, delta);
+
+		for (ParallaxLayer layer : layers) {
+			layer.update(container, delta);
+		}
 	}
 
-    private void updateLayers(ArrayList<ParallaxLayer> layers, GameContainer container, int delta) {
-        for(ParallaxLayer layer: layers)
-            layer.update(container, delta);
-    }
-
-    private void updateEntitiesGrid(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
+	private void updateEntitiesGrid(EntityGridVault vault, GameContainer container, int delta, boolean vis) {
 		Iterator<Entity> iterator = vis ? vault.getVisible(camera).iterator() : vault.getAll().iterator();
 		while (iterator.hasNext()) {
 			Entity e = iterator.next();
@@ -129,7 +125,13 @@ public class World {
 	}
 
 	public void render(GameContainer container, Graphics g) {
-        renderLayers(container, g);
+		g.setColor(new Color(8, 8, 41, 255));
+		g.fillRect(0, 0, camera.getScreenWidth(), camera.getScreenHeight());
+
+		for (ParallaxLayer l : layers) {
+			l.render(container, g, camera);
+		}
+
 		renderEntitiesGrid(entities, container, g);
 		renderEntitiesGrid(projectiles, container, g);
 
@@ -137,21 +139,12 @@ public class World {
 
 		renderEntitiesList(borders, container, g);
 
-
-
 		g.setColor(Color.white);
 
 		g.drawString("entities: " + entities.size(), 10, 50);
 		g.drawString("borders: " + borders.size(), 10, 70);
 		g.drawString("projectiles: " + projectiles.size(), 10, 90);
 	}
-
-    private void renderLayers(GameContainer container, Graphics g)
-    {
-        for (ParallaxLayer l:layers)
-            l.render(container, g, camera);
-
-    }
 
 	private void renderVaultGrid(Graphics g, EntityGridVault vault) {
 		for (int x = 0; x <= vault.cellsX; ++x) {
